@@ -11,7 +11,7 @@
 ### Results
 
 | Tokenizer | Model | Whitespace | Digits |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | LlamaTokenizerFast | Llama-2-7b-hf | Pass | Fail |
 | T5TokenizerFast | flan-t5-small | Fail | Fail |
 | GPTNeoXTokenizerFast | gpt-neox-20b | Pass | Fail |
