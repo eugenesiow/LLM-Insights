@@ -4,7 +4,7 @@
     - Version: 4.31.0
 - [vLLM](https://github.com/vllm-project/vllm)
     - Version: 0.1.3
-- [text-generation-inference](https://github.com/huggingface/text-generation-inference)
+- [text-generation-inference](https://github.com/huggingface/text-generation-inference) (TGI)
     - Version: 1.0.1
 
 ## Generative Inference Speed
@@ -22,14 +22,16 @@
 | vLLM                      | **84.37**     | 48.42           | 21.80       | 17.00             |
 | text-generation-inference | 67.16         | **49.48**       | **22.05**   | **18.61**         | -->
 
-Engine                  | Transformers           | vLLM      | text-generation-inference
+Engine                  | Transformers           | vLLM      | TGI
 ---                     | ---                    | ---       | ---
 mpt-7b-chat             |                        | **84.37** | 67.16
 falcon-7b-instruct      |                        | **82.68** | 
-vicuna-13b-v1.3         |                        | 41.14     | 
+vicuna-7b-v1.3          | 28.71                  | 41.14     | **84.26**
 vicuna-13b-v1.5         | 30.40                  | 48.42     | **49.48**
 oasst-30b               | 14.89                  | 21.80     | **22.05**
 llama2-70b-chat         | 9.53                   | 17.00     | **18.61**
+
+- Custom CUDA kernels were turned off for these runs with TGI.
 
 ## Generative Inference Throughput
 
