@@ -21,6 +21,8 @@
 | GPT2TokenizerFast | starcoder | Pass | Pass |
 | GPT2TokenizerFast | WizardCoder-15B-V1.0 | Pass | Pass |
 
+- `LlamaTokenizerFast` fails the digits test because the tokenizer usually adds a `<s> ` in front of the text. When using the `add_special_tokens=False` parameter, although the `<s>` is removed but the ` ` remains. Hence the number of digits encoded is different from the number of digits in the input sequence.
+
 ### References
 
 1. [Tiedong Liu, & Bryan Kian Hsiang Low. (2023). Goat: Fine-tuned LLaMA Outperforms GPT-4 on Arithmetic Tasks.](https://arxiv.org/abs/2305.14201)
