@@ -25,7 +25,7 @@
 Engine                  | Transformers           | vLLM      | TGI
 ---                     | ---                    | ---       | ---
 mpt-7b-chat             |                        | **84.37** | 67.16
-falcon-7b-instruct      |                        | **82.68** | 
+falcon-7b-instruct      | 25.10                  | 82.68     | **86.71**
 vicuna-7b-v1.3          | 28.71                  | 41.14     | **84.26**
 vicuna-13b-v1.5         | 30.40                  | 48.42     | **49.48**
 oasst-30b               | 14.89                  | 21.80     | **22.05**
@@ -39,4 +39,4 @@ llama2-70b-chat         | 9.53                   | 17.00     | **18.61**
 
 Engine                  | Transformers           | vLLM      | text-generation-inference
 ---                     | ---                    | ---       | ---
-llama2-70b-chat         |                    |      | 
+llama2-70b-chat         | 0.6                    | 14.4      | 6.0
