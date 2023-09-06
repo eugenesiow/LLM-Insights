@@ -10,29 +10,29 @@
 
 ### Results
 
-|       Tokenizer       |               Model                |Whitespace|Digits| zh  |
-|-----------------------|------------------------------------|----------|------|----:|
-|LlamaTokenizerFast     |meta-llama/Llama-2-7b               |Pass      |Pass  |100.0|
-|LlamaTokenizer         |meta-llama/Llama-2-7b               |Pass      |Pass  |100.0|
-|T5TokenizerFast        |google/flan-t5-small                |Fail      |Fail  |  0.0|
-|T5Tokenizer            |google/flan-t5-small                |Fail      |Fail  |  0.0|
-|GPTNeoXTokenizerFast   |EleutherAI/gpt-neox-20b             |Pass      |Fail  |100.0|
-|PreTrainedTokenizerFast|tiiuae/falcon-7b                    |Pass      |Fail  |100.0|
-|BertTokenizerFast      |bert-base-uncased                   |Fail      |Fail  |  1.2|
-|BertTokenizer          |bert-base-uncased                   |Fail      |Fail  |  1.2|
-|GPT2TokenizerFast      |Deci/DeciCoder-1b                   |Pass      |Pass  |100.0|
-|GPT2Tokenizer          |Deci/DeciCoder-1b                   |Pass      |Pass  |100.0|
-|QWenTokenizer          |Qwen/Qwen-7B                        |Pass      |Pass  |100.0|
-|GPT2TokenizerFast      |bigcode/starcoder                   |Pass      |Pass  |100.0|
-|GPT2Tokenizer          |bigcode/starcoder                   |Pass      |Pass  |100.0|
-|GPT2TokenizerFast      |WizardLM/WizardCoder-15B-V1.0       |Pass      |Pass  |100.0|
-|GPT2Tokenizer          |WizardLM/WizardCoder-15B-V1.0       |Pass      |Pass  |100.0|
-|LlamaTokenizer         |Phind/Phind-CodeLlama-34B-v2        |Pass      |Pass  |100.0|
-|LlamaTokenizerFast     |WizardLM/WizardCoder-Python-34B-V1.0|Pass      |Pass  |100.0|
-|LlamaTokenizer         |WizardLM/WizardCoder-Python-34B-V1.0|Pass      |Pass  |100.0|
-|GPT2TokenizerFast      |defog/sqlcoder                      |Pass      |Pass  |100.0|
-|GPT2Tokenizer          |defog/sqlcoder                      |Pass      |Pass  |100.0|
-|LlamaTokenizer         |HuggingFaceM4/idefics-80b-instruct  |Pass      |Pass  |100.0|
+|       Tokenizer       |               Model                |Vocab |Whitespace|Digits| zh  |
+|-----------------------|------------------------------------|-----:|----------|------|----:|
+|LlamaTokenizerFast     |meta-llama/Llama-2-7b               | 32000|Pass      |Pass  |100.0|
+|LlamaTokenizer         |meta-llama/Llama-2-7b               | 32000|Pass      |Pass  |100.0|
+|T5TokenizerFast        |google/flan-t5-small                | 32100|Fail      |Fail  |  0.0|
+|T5Tokenizer            |google/flan-t5-small                | 32100|Fail      |Fail  |  0.0|
+|GPTNeoXTokenizerFast   |EleutherAI/gpt-neox-20b             | 50254|Pass      |Fail  |100.0|
+|PreTrainedTokenizerFast|tiiuae/falcon-7b                    | 65024|Pass      |Fail  |100.0|
+|BertTokenizerFast      |bert-base-uncased                   | 30522|Fail      |Fail  |  1.2|
+|BertTokenizer          |bert-base-uncased                   | 30522|Fail      |Fail  |  1.2|
+|GPT2TokenizerFast      |Deci/DeciCoder-1b                   | 49152|Pass      |Pass  |100.0|
+|GPT2Tokenizer          |Deci/DeciCoder-1b                   | 49152|Pass      |Pass  |100.0|
+|QWenTokenizer          |Qwen/Qwen-7B                        |151851|Pass      |Pass  |100.0|
+|GPT2TokenizerFast      |bigcode/starcoder                   | 49152|Pass      |Pass  |100.0|
+|GPT2Tokenizer          |bigcode/starcoder                   | 49152|Pass      |Pass  |100.0|
+|GPT2TokenizerFast      |WizardLM/WizardCoder-15B-V1.0       | 49152|Pass      |Pass  |100.0|
+|GPT2Tokenizer          |WizardLM/WizardCoder-15B-V1.0       | 49152|Pass      |Pass  |100.0|
+|LlamaTokenizer         |Phind/Phind-CodeLlama-34B-v2        | 32000|Pass      |Pass  |100.0|
+|LlamaTokenizerFast     |WizardLM/WizardCoder-Python-34B-V1.0| 32000|Pass      |Pass  |100.0|
+|LlamaTokenizer         |WizardLM/WizardCoder-Python-34B-V1.0| 32000|Pass      |Pass  |100.0|
+|GPT2TokenizerFast      |defog/sqlcoder                      | 49152|Pass      |Pass  |100.0|
+|GPT2Tokenizer          |defog/sqlcoder                      | 49152|Pass      |Pass  |100.0|
+|LlamaTokenizer         |HuggingFaceM4/idefics-80b-instruct  | 32000|Pass      |Pass  |100.0|
 
 - `LlamaTokenizerFast` adds a `<s>\s` in front of the text. When using the transformers library's `add_special_tokens=False` parameter, although the `<s>` is removed but the `\s` remains. Hence the number of digits encoded is different from the number of digits in the input sequence.
 - `zh` tokenization measures the percentage of characters can be successfully encoded and decoded using the tokenizer from `\u4e00` to `\u9ff0`. An example of an unsuccessful decoding would be the `<unk>` token.
