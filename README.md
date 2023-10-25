@@ -17,4 +17,4 @@
 
 ## Acknowledgements
 
-I'm grateful to my employers for trusting me to lead the team that built the GPU supercompute platform/infrastructure and co-lead the team doing LLM pre-training. This allowed me to work on huge on-premise GPU compute clusters with A100s and then H100s which is certainly a privilege. Hopefully sharing some of these notes and insights helps the community.
+I'm grateful to my employers for trusting me to lead the team that built the GPU supercompute platform/infrastructure and to co-lead the team doing LLM pre-training. This allowed me to work on large on-premise GPU compute clusters with A100s and then H100s, which is certainly a privilege. Hopefully sharing some of these notes and insights helps the community.
