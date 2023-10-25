@@ -1,4 +1,4 @@
-# Pre-Training
+# Tokenization
 
 ## All Tokenizers Are Not Made Equal
 
