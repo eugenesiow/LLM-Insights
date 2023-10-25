@@ -5,6 +5,7 @@
 3. [Pre-Training Stage](pretraining/)
    - [Tokenization](pretraining/tokenization/README.md)
      - [All Tokenizers Are Not Made Equal](pretraining/tokenization/README.md#all-tokenizers-are-not-made-equal)
+   - [Model Architecture](pretraining/architecture/README.md)
    - [Multi-Node](pretraining/multi-node/README.md)
    - [Training](pretraining/training/README.md)
 4. Fine-Tuning Stage
