@@ -39,9 +39,10 @@
 |ChatGLMTokenizer       |THUDM/chatglm-6b                    |130344|Pass      |Pass  |100.0| 99.2|
 |BloomTokenizerFast     |bigscience/bloomz                   |250680|Pass      |Fail  |100.0|100.0|
 
-- `LlamaTokenizerFast` adds a `<s>\s` in front of the text. When using the transformers library's `add_special_tokens=False` parameter, although the `<s>` is removed but the `\s` remains. Hence the number of digits encoded is different from the number of digits in the input sequence.
+- `LlamaTokenizer` adds a `<s>\s` in front of the text. When using the transformers library's `add_special_tokens=False` parameter, although the `<s>` is removed but the `\s` remains. Hence the number of digits encoded is different from the number of digits in the input sequence.
 - `zh` tokenization measures the percentage of characters can be successfully encoded and decoded using the tokenizer from `\u4e00` to `\u9ff0`. An example of an unsuccessful decoding would be the `<unk>` token.
 - The `th` block has 87 filled and another 41 empty [7], but we test with `\u0e00` to `\u0e7f` rather than just the filled ranges, (`\u0e01`, `\u0e3a`), (`\u0e3f`, `\u0e5b`) as we’re using a similar method with the `zh` character set. 
+- Tokenizers based on SentencePiece [8] like the `LlamaTokenizer` [9] split all numbers into individual digits, and fallback to bytes to decompose unknown UTF-8 characters. They should pass the whitespace, digits and multi-lingual tests if trained properly.
 
 ## Packing
 
@@ -58,3 +59,5 @@ The Multipack sampler [6] is designed for padding-free distributed training of l
 5. https://huggingface.co/spaces/hf-accelerate/model-memory-usage
 6. https://github.com/imoneoi/multipack_sampler
 7. https://en.wikipedia.org/wiki/Thai_(Unicode_block)
+8. [Taku Kudo, & John Richardson. (2018). SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing.](https://arxiv.org/abs/1808.06226)
+9. [Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, Aurelien Rodriguez, Armand Joulin, Edouard Grave, & Guillaume Lample. (2023). LLaMA: Open and Efficient Foundation Language Models.](https://arxiv.org/abs/2302.13971)
