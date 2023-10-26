@@ -1,18 +1,18 @@
 # LLM Insights
 
-1. Infrastructure/Platform
+1. [Infrastructure/Platform](infrastructure/)
+   - [Hardware](infrastructure/hardware)
 2. Data Engineering
 3. [Pre-Training Stage](pretraining/)
    - [Tokenization](pretraining/tokenization/README.md)
-     - [All Tokenizers Are Not Made Equal](pretraining/tokenization/README.md#all-tokenizers-are-not-made-equal)
    - [Model Architecture](pretraining/architecture/README.md)
    - [Multi-Node](pretraining/multi-node/README.md)
    - [Training](pretraining/training/README.md)
 4. Fine-Tuning Stage
 5. Alignment Stage
 6. [Inference Stage](inference/)
-   1. [Speed](inference/README.md#generative-inference-speed)
-   2. [Throughput](inference/README.md#generative-inference-throughput)
+   - [Speed](inference/README.md#generative-inference-speed)
+   - [Throughput](inference/README.md#generative-inference-throughput)
 7. Applications
 
 ## Acknowledgements

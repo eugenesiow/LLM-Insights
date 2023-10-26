@@ -1,5 +1,13 @@
 # Tokenization
 
+- [Tokenization](#tokenization)
+  - [All Tokenizers Are Not Made Equal](#all-tokenizers-are-not-made-equal)
+    - [Tests](#tests)
+    - [Results](#results)
+  - [Packing](#packing)
+  - [Scaling](#scaling)
+  - [References](#references)
+
 ## All Tokenizers Are Not Made Equal
 
 ### Tests
@@ -50,7 +58,7 @@ The Multipack sampler [6] is designed for padding-free distributed training of l
 
 ## Scaling
 
-### References
+## References
 
 1. [Tiedong Liu, & Bryan Kian Hsiang Low. (2023). Goat: Fine-tuned LLaMA Outperforms GPT-4 on Arithmetic Tasks.](https://arxiv.org/abs/2305.14201)
 2. [Anthony, Q., Biderman, S., & Schoelkopf, H.. (2023). Transformer Math 101.](https://blog.eleuther.ai/transformer-math/)
