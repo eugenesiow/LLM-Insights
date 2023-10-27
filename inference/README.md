@@ -2,10 +2,16 @@
 
 - [Inference](#inference)
   - [Estimating Model Size](#estimating-model-size)
+    - [Tools](#tools)
   - [Generative Inference Speed](#generative-inference-speed)
   - [Generative Inference Throughput](#generative-inference-throughput)
 
 ## Estimating Model Size
+
+### Tools
+
+- [🤗 Model Memory Calculator](https://huggingface.co/spaces/hf-accelerate/model-memory-usage)
+- [Can you run it? LLM version](https://huggingface.co/spaces/Vokturz/can-it-run-llm)
 
 ## Generative Inference Speed
 
