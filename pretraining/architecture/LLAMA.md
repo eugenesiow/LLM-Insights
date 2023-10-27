@@ -3,20 +3,20 @@
 ```
 LlamaForCausalLM(
   (model): LlamaModel(
-    (embed_tokens): Embedding(32000, 4096, padding_idx=0)
+    (embed_tokens): Embedding(32000, N_dim, padding_idx=0)
     (layers): ModuleList(
-      (0-31): 32 x LlamaDecoderLayer(
+      (0-(N_layers-1)): N_layers x LlamaDecoderLayer(
         (self_attn): LlamaAttention(
-          (q_proj): Linear(in_features=4096, out_features=4096, bias=False)
-          (k_proj): Linear(in_features=4096, out_features=4096, bias=False)
-          (v_proj): Linear(in_features=4096, out_features=4096, bias=False)
-          (o_proj): Linear(in_features=4096, out_features=4096, bias=False)
+          (q_proj): Linear(in_features=N_dim, out_features=N_dim, bias=False)
+          (k_proj): Linear(in_features=N_dim, out_features=N_dim, bias=False)
+          (v_proj): Linear(in_features=N_dim, out_features=N_dim, bias=False)
+          (o_proj): Linear(in_features=N_dim, out_features=N_dim, bias=False)
           (rotary_emb): LlamaRotaryEmbedding()
         )
         (mlp): LlamaMLP(
-          (gate_proj): Linear(in_features=4096, out_features=11008, bias=False)
-          (down_proj): Linear(in_features=11008, out_features=4096, bias=False)
-          (up_proj): Linear(in_features=4096, out_features=11008, bias=False)
+          (gate_proj): Linear(in_features=N_dim, out_features=N_int, bias=False)
+          (down_proj): Linear(in_features=N_int, out_features=N_dim, bias=False)
+          (up_proj): Linear(in_features=N_dim, out_features=N_int, bias=False)
           (act_fn): SiLUActivation()
         )
         (input_layernorm): LlamaRMSNorm()
@@ -25,7 +25,7 @@ LlamaForCausalLM(
     )
     (norm): LlamaRMSNorm()
   )
-  (lm_head): Linear(in_features=4096, out_features=32000, bias=False)
+  (lm_head): Linear(in_features=N_dim, out_features=32000, bias=False)
 )
 ```
 

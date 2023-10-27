@@ -7,7 +7,11 @@
   - [Intra-Node Connectivity](#intra-node-connectivity)
     - [NVLink](#nvlink)
     - [NVSwitch](#nvswitch)
+  - [Inter-Node Connectivity](#inter-node-connectivity)
+    - [Infiniband](#infiniband)
   - [References](#references)
+
+Note: Important to take note that GB/s (gigabytes per second) and Gb/s (gigabits per second) are different units and 1GB/s = 1Gb/s * 8.
 
 ## GPUs
 
@@ -217,6 +221,25 @@ The results show a much worse performance without NVLink between the GPUs for pe
 # Out of bounds values : 0 OK
 # Avg bus bandwidth    : 5.19883
 ```
+
+## Inter-Node Connectivity
+
+### Infiniband
+
+Mellanox (acquired by Nvidia) manufactures InfiniBand network switches and network cards (sometimes called HCA).
+
+We tend to run into lots of jargon or abbreviations when dealing with infiniband. 
+
+- IB: Infiniband - InfiniBand is a computer networking communications standard used in high-performance computing that features very high throughput and very low latency. 
+- HCA: Host Channel Adapter - is a network fabric interconnect based on InfiniBand technology, and is usually used to describe an infiniband interface card.
+
+| Connectivity  | Year | Throughput (Gb/s)  |
+|---|---|---|
+| EDR  | 2014 | 100  |
+| HDR  | 2018 | 200  |
+| NDR  | 2022 | 400  |
+
+Most systems use a 4 link/lane connector (Quad Small Form-factor Pluggable (QSFP)), hence the throughput values listed above are the theoretical effective throughput (Gb/s) with such 4 link connectors.
 
 ## References
 1. [Wikipedia. Non-uniform memory access (NUMA).](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
