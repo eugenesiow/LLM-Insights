@@ -1,11 +1,11 @@
 # Inference
 
-- [Transformers (default)](https://huggingface.co/docs/transformers/index)
-    - Version: 4.31.0
-- [vLLM](https://github.com/vllm-project/vllm)
-    - Version: 0.1.3
-- [text-generation-inference](https://github.com/huggingface/text-generation-inference) (TGI)
-    - Version: 1.0.1
+- [Inference](#inference)
+  - [Estimating Model Size](#estimating-model-size)
+  - [Generative Inference Speed](#generative-inference-speed)
+  - [Generative Inference Throughput](#generative-inference-throughput)
+
+## Estimating Model Size
 
 ## Generative Inference Speed
 
@@ -15,6 +15,12 @@
 - The hardware used for testing, depending on model size, is one to two A100 (80GB) GPUs which are interconnected via NVLINK (SXM) on a DGX A100 (640GB).
 - As much as possible, OpenAI-compatible chat completion APIs are used in the testing and the full round-trip for the request is measured.
 - Only the completion/output tokens are counted in token/s calculations.
+- [Transformers (default)](https://huggingface.co/docs/transformers/index)
+  - Version: 4.31.0
+- [vLLM](https://github.com/vllm-project/vllm)
+  - Version: 0.1.3
+- [text-generation-inference](https://github.com/huggingface/text-generation-inference) (TGI)
+  - Version: 1.0.1
 
 <!-- | Engine                    | mpt-7b-chat   | vicuna-13b-v1.5 | oasst-30b   | llama2-70b-chat   |
 |---------------------------|---------------|-----------------|-------------|-------------------|
