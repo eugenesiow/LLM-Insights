@@ -222,6 +222,45 @@ The results show a much worse performance without NVLink between the GPUs for pe
 # Avg bus bandwidth    : 5.19883
 ```
 
+Let's take a look at the abbreviated GPU topology of a DGX H100 (640GB). There are 8x H100 (80GB) GPUs, each has NVLink 4.0 connections with 18x (bonded set of) links with each of the other GPUs with NVSwitch 3.0, hence `NV18`.
+```
+        GPU0    GPU1    GPU2    GPU3    GPU4    GPU5    GPU6    GPU7    ...
+GPU0     X      NV18    NV18    NV18    NV18    NV18    NV18    NV18    ...
+GPU1    NV18     X      NV18    NV18    NV18    NV18    NV18    NV18    ...
+GPU2    NV18    NV18     X      NV18    NV18    NV18    NV18    NV18    ...
+GPU3    NV18    NV18    NV18     X      NV18    NV18    NV18    NV18    ...
+GPU4    NV18    NV18    NV18    NV18     X      NV18    NV18    NV18    ...
+GPU5    NV18    NV18    NV18    NV18    NV18     X      NV18    NV18    ...
+GPU6    NV18    NV18    NV18    NV18    NV18    NV18     X      NV18    ...
+GPU7    NV18    NV18    NV18    NV18    NV18    NV18    NV18     X      ...
+```
+
+Running the same `all_reduce` benchmark between 4 GPUs we get faster speeds than the DGX A100, about 66% faster for this operation.
+```
+#                                                              out-of-place                       in-place
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)
+  1073741824     268435456     float     sum      -1   4367.9  245.83  368.74      0   4366.8  245.89  368.83      0
+  2147483648     536870912     float     sum      -1   8707.5  246.62  369.94      0   8711.0  246.53  369.79      0
+  4294967296    1073741824     float     sum      -1    17396  246.90  370.34      0    17392  246.95  370.43      0
+  8589934592    2147483648     float     sum      -1    34758  247.14  370.70      0    34754  247.17  370.75      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 369.941
+```
+
+Disabling NVLink we see a drop in performance as expected but also better speeds than the DGX A100 without NVLink. HBM3 and PCIe5 at work?
+```
+#                                                              out-of-place                       in-place
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)
+  1073741824     268435456     float     sum      -1    67075   16.01   24.01      0    66560   16.13   24.20      0
+  2147483648     536870912     float     sum      -1   132729   16.18   24.27      0   132975   16.15   24.22      0
+  4294967296    1073741824     float     sum      -1   268616   15.99   23.98      0   283108   15.17   22.76      0
+  8589934592    2147483648     float     sum      -1   644771   13.32   19.98      0   645000   13.32   19.98      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 22.9255
+```
+
 ## Inter-Node Connectivity
 
 ### Infiniband

@@ -13,13 +13,13 @@
 
 A frequent question we have is estimating how much GPU memory (VRAM) is required for inference for different models of different parameter sizes. Based on EleutherAI's [Transformer Math 101](https://blog.eleuther.ai/transformer-math/) estimates, this is about 1.2 times the total model size in memory. The following is a table of common models and how much memory they require for inference. The memory required is also dependent on what precision the weights are stored with in GPU memory. This can vary from full precision (FP32), half precision (FP16/BF16) or quantised 8-bit (INT8) and 4-bit (INT4) precisions. In my experience, FP16/BF16 are good precisions for LLMs to work with. With INT8 and INT4 there might be some drop in accuracy depending on how it was quantized.
 
-
 |  Model  |        Parameters        |                      FP32                      |                   FP16/BF16                   |                    INT8                     |                    INT4                    |
 |---------|--------------------------|------------------------------------------------|-----------------------------------------------|---------------------------------------------|--------------------------------------------|
 |CodeLLaMA|13b<br/>34b               |58.2 GB<br/>150.58 GB                           |29.1 GB<br/>75.29 GB                           |14.55 GB<br/>37.64 GB                        |7.28 GB<br/>18.82 GB                        |
 |LLaMA    |7b<br/>13b<br/>30b<br/>65b|29.61 GB<br/>57.55 GB<br/>144.6 GB<br/>290.87 GB|14.81 GB<br/>28.77 GB<br/>72.3 GB<br/>145.43 GB|7.4 GB<br/>14.39 GB<br/>36.15 GB<br/>72.72 GB|3.7 GB<br/>7.19 GB<br/>18.08 GB<br/>36.36 GB|
 |LLaMA-2  |7b<br/>13b<br/>70b        |29.61 GB<br/>57.55 GB<br/>307.55 GB             |14.81 GB<br/>28.77 GB<br/>153.78 GB            |7.4 GB<br/>14.39 GB<br/>76.89 GB             |3.7 GB<br/>7.19 GB<br/>38.44 GB             |
 |OpenLLaMA|3b                        |14.91 GB                                        |7.45 GB                                        |3.73 GB                                      |1.86 GB                                     |
+|T5 v1.1  |11b                       |49.19 GB                                        |24.6 GB                                        |12.3 GB                                      |6.15 GB                                     |
 
 ### Tools
 
