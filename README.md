@@ -1,13 +1,15 @@
 # LLM Insights
 
 1. Infrastructure/Platform
-   - [Hardware](infrastructure/hardware)
+   - [Hardware](infrastructure/hardware/README.md)
+   - [Alternative Accelerators](infrastructure/hardware/ALTERNATIVES.md)
 2. Data Engineering
 3. Pre-Training Stage
    - [Tokenization](pretraining/tokenization/README.md)
    - [Model Architecture](pretraining/architecture/README.md)
    - [Multi-Node](pretraining/multi-node/README.md)
    - [Training](pretraining/training/README.md)
+   - [Base Model Evaluation](pretraining/evaluation/README.md)
 4. Fine-Tuning Stage
    - [Adapters](finetuning/adapters/)
 5. Alignment Stage
