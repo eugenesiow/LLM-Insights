@@ -2,7 +2,7 @@
 
 1. Infrastructure/Platform
    - [Hardware](infrastructure/hardware/README.md)
-   - [Alternative Accelerators](infrastructure/hardware/ALTERNATIVES.md)
+   - [Alternative Accelerators](infrastructure/hardware/alternatives/README.md)
 2. Data Engineering
 3. Pre-Training Stage
    - [Tokenization](pretraining/tokenization/README.md)
