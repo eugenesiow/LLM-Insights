@@ -1,6 +1,8 @@
 # Base Model Evaluation
 
-The types of evaluations and the models evaluated are not meant to be exhaustive, there are leaderboards like the [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) for that. What is presented is a basic set of evaluations that we used to sanity check our models during training, comparing them against how the leading base models of that parameter count were performing.
+The types of evaluations and the models evaluated are not meant to be exhaustive, there are leaderboards like the [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) for that. What is presented is a basic set of evaluations that we used to sanity check our models during training, comparing them against how the leading (or most popular) base models of that parameter count were performing.
+
+Running each of these evaluations on our own (even if results have previously been reported somewhere) let's us work out any kinks in the evaluation code base (e.g. multi-GPU, different architectures, etc.) on our own hardware.
 
 ## Problem Solving
 
@@ -8,9 +10,11 @@ The [instruct-eval](https://github.com/declare-lab/instruct-eval) harness provid
 
 | Model                    | [MMLU](#mmlu)  | [BBH](#bbh)   | [HumanEval](#humaneval) | [Drop](#drop)  |
 |--------------------------|-------|-------|-----------|-------|
+| [btlm_3b_8k](https://huggingface.co/cerebras/btlm-3b-8k-base) | 28.01	| 30.79 |	10.98 |	17.87 |
 | [llama2_7b](https://huggingface.co/meta-llama/Llama-2-7b-hf) | 45.96 | 32.04 | 14.02     | 31.57 |
-| [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 62.61 | 43.99 | 23.78     | 46.56 |
+| [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 62.61 | 43.99 | **23.78**     | 46.56 |
 | [llama2_13b](https://huggingface.co/meta-llama/Llama-2-13b-hf) | 55.68 | 37.62 | 14.63     | 41.58 |
+| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf) | **69.12** | **50.46** | 17.68     | **62.53** |
 
 ### MMLU
 
@@ -32,9 +36,11 @@ The [instruct-eval](https://github.com/declare-lab/instruct-eval) harness provid
 
 | Model                    | Avg   | [HellaSwag](#hellaswag) | [OBQA](#obqa)  | [WinoGrande](#winogrande) | [ARC_c](#arc) | [ARC_e](#arc) | [BoolQ](#boolq) | [PIQA](#piqa)  |
 |--------------------------|-----------|-------|------------|-------|-------|-------|-------|-------|
+| [btlm_3b_8k](https://huggingface.co/cerebras/btlm-3b-8k-base) | 61.10 |69.66 | 40.8 |	65.82 |	37.63 |	66.92 |	69.48 |	77.42 |
 | [llama2_7b](https://huggingface.co/meta-llama/Llama-2-7b-hf) | 66.71| 75.98     | 44.20 | 69.06      | 46.33 | 74.58 | 77.74 | 79.11  |
 | [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 71.17| 81.01     | 44.20 | 74.11      | 53.67 | 79.46 | 83.61 | 82.15  |
 | [llama2_13b](https://huggingface.co/meta-llama/Llama-2-13b-hf)| 69.28| 79.38     | 45.40 | 72.45      | 49.15 | 77.53 | 80.55 | 80.52  |
+| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf)| **73.61** | **83.81** |	**48.80** |	**77.98** |	**57.25** |	**80.98** |	**83.7** |	**82.75** |
 
 ### HellaSwag
 
