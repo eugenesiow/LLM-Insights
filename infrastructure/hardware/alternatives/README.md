@@ -1,5 +1,11 @@
 # Alternative Accelerators
 
+- [Alternative Accelerators](#alternative-accelerators)
+  - [Gaudi2](#gaudi2)
+    - [Intra-Node Connectivity](#intra-node-connectivity)
+    - [Inter-Node Connectivity](#inter-node-connectivity)
+    - [Software Stack](#software-stack)
+
 | Model           | Manufacturer     | Process  | Transistors | Cores     | Performance        | SRAM  | HBM   | HBM Bandwidth    |
 |-----------------|------------------|----------|-------------|-----------|--------------------|-------|-------|------------------|
 | H100-SXM        | Nvidia           | TSMC 5nm | 80B         | 16896+528 | 990 TFLOPS (BF16)  | 50MB  | 80GB  | 3.35TBps (HBM3)  |
@@ -7,7 +13,7 @@
 | [Gaudi2](#gaudi2)          | Habana           | TSMC 7nm | ?           | ?         | ?                  | 48MB  | 96GB  | 2.45TBps (HBM2e) |
 | Gaudi3          | Habana           | TSMC 5nm | ?           | ?         | ?                  | ?     | ?     | Prob HBM2e            |
 | MI300X          | AMD              | TSMC 5nm | 146B        | ?         | 383 TFLOPS (fp16)  | ?     | 192GB | 5.2TBps (HBM3)   |
-| WSE-2           | Cerebras         | 7nm      | 2600B       | 850000    | 7500 TFLOPS (fp16) | 40GB  | -     | -                |
+| WSE-2           | Cerebras         | TSMC 7nm      | 2600B       | 850000    | 7500 TFLOPS (fp16) | 40GB  | -     | -                |
 | SN40L           | SambaNova        | TSMC 5nm | 102B        | 1040      | 638 TFLOPS (bf16)  | 520MB | 64GB  | ?                |
 
 
