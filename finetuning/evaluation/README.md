@@ -24,6 +24,7 @@ Running each of these evaluations on our own (even if results have previously be
 | [openhermes2.5_mistral_7b](https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B) | 36.11 | 53.07 | 44.59 |
 | [llama2_chat_13b](https://huggingface.co/meta-llama/Llama-2-13b-chat-hf)          | 28.03 | 43.95 | 35.99 |
 | [orca2_13b](https://huggingface.co/microsoft/Orca-2-13b)                | **39.17** | **55.76** | **47.47** |
+| [yi_chat_34b](https://huggingface.co/01-ai/Yi-34B-Chat)          | 38.68 | 55.31 | 47.00 |
 | [llama2_chat_70b](https://huggingface.co/meta-llama/Llama-2-70b-chat-hf)          | 35.74 | 52.77 | 44.26 |
 
 There are two parts to the [TruthfulQA](https://github.com/sylinrl/TruthfulQA) evaluation. There is a main generation task, which measures the truthfulness and informativeness of generated answers. However, this is difficult to evaluate automatically (the usual metrics like BLEURT, ROUGE, and BLEU as well as GPT-judge can be used), this is **NOT INCLUDED** in the above evaluations. There is also an alternative multiple-choice option where the model is evaluated based on its ability to identify true statements from a list of multiple-choice statements. 
@@ -42,7 +43,8 @@ From the paper, [TruthfulQA: Measuring How Models Mimic Human Falsehoods](https:
 | [openhermes2.5_mistral_7b](https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B) | 70.61 | 78.53     | 46.2  | 74.43      | 53.07 | 75.93 | 88.29 | 77.8  |
 | [llama2_chat_13b](https://huggingface.co/meta-llama/Llama-2-13b-chat-hf)          | 72.97 | 81.74     | 44.2  | 74.27      | 59.98 | 81.52 | 86.61 | 82.48 |
 | [orca2_13b](https://huggingface.co/microsoft/Orca-2-13b)                | 68.46 | 79.65     | 44.00 | 70.96      | 50.17 | 73.74 | 81.62 | 79.11 |
-| [llama2_chat_70b](https://huggingface.co/meta-llama/Llama-2-70b-chat-hf)          | 71.53 | 82.15     | 45.40 | 74.98      | 54.27 | 76.30 | 86.73 | 80.90 |
+| [yi_chat_34b](https://huggingface.co/01-ai/Yi-34B-Chat)                | 72.11 | 80.69     | **47.80** | **77.27**      | 54.78 | 74.49 | **90.00** | 79.71 |
+| [llama2_chat_70b](https://huggingface.co/meta-llama/Llama-2-70b-chat-hf)          | 71.53 | **82.15**     | 45.40 | 74.98      | 54.27 | 76.30 | 86.73 | 80.90 |
 
 ### HellaSwag
 

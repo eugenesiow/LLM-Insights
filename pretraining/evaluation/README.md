@@ -1,5 +1,19 @@
 # Base Model Evaluation
 
+- [Base Model Evaluation](#base-model-evaluation)
+  - [Problem Solving](#problem-solving)
+    - [MMLU](#mmlu)
+    - [BBH](#bbh)
+    - [HumanEval](#humaneval)
+    - [DROP](#drop)
+  - [Commonsense Reasoning Tasks](#commonsense-reasoning-tasks)
+    - [HellaSwag](#hellaswag)
+    - [OBQA](#obqa)
+    - [WinoGrande](#winogrande)
+    - [ARC](#arc)
+    - [BoolQ](#boolq)
+    - [PIQA](#piqa)
+
 The types of evaluations and the models evaluated are not meant to be exhaustive, there are leaderboards like the [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) for that. What is presented is a basic set of evaluations that we used to sanity check our models during training, comparing them against how the leading (or most popular) base models of that parameter count were performing.
 
 Running each of these evaluations on our own (even if results have previously been reported somewhere) let's us work out any kinks in the evaluation code base (e.g. multi-GPU, different architectures, etc.) on our own hardware.
@@ -14,7 +28,8 @@ The [instruct-eval](https://github.com/declare-lab/instruct-eval) harness provid
 | [llama2_7b](https://huggingface.co/meta-llama/Llama-2-7b-hf) | 45.96 | 32.04 | 14.02     | 31.57 |
 | [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 62.61 | 43.99 | **23.78**     | 46.56 |
 | [llama2_13b](https://huggingface.co/meta-llama/Llama-2-13b-hf) | 55.68 | 37.62 | 14.63     | 41.58 |
-| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf) | **69.12** | **50.46** | 17.68     | **62.53** |
+| [yi_34b](https://huggingface.co/01-ai/Yi-34B) | **76.34** | **52.15** | 17.68     | **74.65** |
+| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf) | 69.12 | 50.46 | 17.68     | 62.53 |
 
 ### MMLU
 
@@ -40,7 +55,8 @@ The [instruct-eval](https://github.com/declare-lab/instruct-eval) harness provid
 | [llama2_7b](https://huggingface.co/meta-llama/Llama-2-7b-hf) | 66.71| 75.98     | 44.20 | 69.06      | 46.33 | 74.58 | 77.74 | 79.11  |
 | [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 71.17| 81.01     | 44.20 | 74.11      | 53.67 | 79.46 | 83.61 | 82.15  |
 | [llama2_13b](https://huggingface.co/meta-llama/Llama-2-13b-hf)| 69.28| 79.38     | 45.40 | 72.45      | 49.15 | 77.53 | 80.55 | 80.52  |
-| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf)| **73.61** | **83.81** |	**48.80** |	**77.98** |	**57.25** |	**80.98** |	**83.7** |	**82.75** |
+| [yi_34b](https://huggingface.co/01-ai/Yi-34B) | **75.14** | 83.69     | 46.60 | **78.93**      | **61.52** | **84.26** | **88.32** | 82.64  |
+| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf)| 73.61 | **83.81** |	**48.80** |	77.98 |	57.25 |	80.98 |	83.7 |	82.75 |
 
 ### HellaSwag
 
