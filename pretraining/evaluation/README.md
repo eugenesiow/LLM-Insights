@@ -25,11 +25,12 @@ The [instruct-eval](https://github.com/declare-lab/instruct-eval) harness provid
 | Model                    | [MMLU](#mmlu)  | [BBH](#bbh)   | [HumanEval](#humaneval) | [Drop](#drop)  |
 |--------------------------|-------|-------|-----------|-------|
 | [btlm_3b_8k](https://huggingface.co/cerebras/btlm-3b-8k-base) | 28.01	| 30.79 |	10.98 |	17.87 |
-| [llama2_7b](https://huggingface.co/meta-llama/Llama-2-7b-hf) | 45.96 | 32.04 | 14.02     | 31.57 |
-| [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 62.61 | 43.99 | **23.78**     | 46.56 |
-| [llama2_13b](https://huggingface.co/meta-llama/Llama-2-13b-hf) | 55.68 | 37.62 | 14.63     | 41.58 |
+| [llama2_7b](../architecture/LLAMA2.md) | 45.96 | 32.04 | 14.02     | 31.57 |
+| [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 62.61 | 43.99 | 23.78     | 46.56 |
+| [llama2_13b](../architecture/LLAMA2.md) | 55.68 | 37.62 | 14.63     | 41.58 |
 | [yi_34b](https://huggingface.co/01-ai/Yi-34B) | **76.34** | **52.15** | 17.68     | **74.65** |
-| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf) | 69.12 | 50.46 | 17.68     | 62.53 |
+| [mixtral_8x7b](../architecture/Mixtral.md) | 70.50 | 48.78 | **27.44**     | 57.74 |
+| [llama2_70b](../architecture/LLAMA2.md) | 69.12 | 50.46 | 17.68     | 62.53 |
 
 ### MMLU
 
@@ -52,11 +53,12 @@ The [instruct-eval](https://github.com/declare-lab/instruct-eval) harness provid
 | Model                    | Avg   | [HellaSwag](#hellaswag) | [OBQA](#obqa)  | [WinoGrande](#winogrande) | [ARC_c](#arc) | [ARC_e](#arc) | [BoolQ](#boolq) | [PIQA](#piqa)  |
 |--------------------------|-----------|-------|------------|-------|-------|-------|-------|-------|
 | [btlm_3b_8k](https://huggingface.co/cerebras/btlm-3b-8k-base) | 61.10 |69.66 | 40.8 |	65.82 |	37.63 |	66.92 |	69.48 |	77.42 |
-| [llama2_7b](https://huggingface.co/meta-llama/Llama-2-7b-hf) | 66.71| 75.98     | 44.20 | 69.06      | 46.33 | 74.58 | 77.74 | 79.11  |
+| [llama2_7b](../architecture/LLAMA2.md) | 66.71| 75.98     | 44.20 | 69.06      | 46.33 | 74.58 | 77.74 | 79.11  |
 | [mistral_7b_v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1) | 71.17| 81.01     | 44.20 | 74.11      | 53.67 | 79.46 | 83.61 | 82.15  |
-| [llama2_13b](https://huggingface.co/meta-llama/Llama-2-13b-hf)| 69.28| 79.38     | 45.40 | 72.45      | 49.15 | 77.53 | 80.55 | 80.52  |
+| [llama2_13b](../architecture/LLAMA2.md)| 69.28| 79.38     | 45.40 | 72.45      | 49.15 | 77.53 | 80.55 | 80.52  |
 | [yi_34b](https://huggingface.co/01-ai/Yi-34B) | **75.14** | 83.69     | 46.60 | **78.93**      | **61.52** | **84.26** | **88.32** | 82.64  |
-| [llama2_70b](https://huggingface.co/meta-llama/Llama-2-70b-hf)| 73.61 | **83.81** |	**48.80** |	77.98 |	57.25 |	80.98 |	83.7 |	82.75 |
+| [mixtral_8x7b](../architecture/Mixtral.md)| 74.20 | **84.01** |	47.00 |	76.56 | 59.73 |	83.80 |	84.80 |	**83.51** |
+| [llama2_70b](../architecture/LLAMA2.md)| 73.61 | 83.81 |	**48.80** |	77.98 |	57.25 |	80.98 |	83.7 |	82.75 |
 
 ### HellaSwag
 
