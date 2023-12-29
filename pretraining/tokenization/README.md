@@ -20,6 +20,12 @@
 
 |       Tokenizer       |               Model                |Vocab |Whitespace|Digits| zh  | th  |
 |-----------------------|------------------------------------|-----:|----------|------|----:|----:|
+|cl100k_base            |gpt-4                               |100277|Pass      |      |     |     |
+|cl100k_base            |gpt-3.5-turbo                       |100277|Pass      |      |     |     |
+|cl100k_base            |text-embedding-ada-002              |100277|Pass      |      |     |     |
+|p50k_base              |text-davinci-002                    |50281 |Pass      |      |     |     |
+|p50k_base              |text-davinci-003                    |50281 |Pass      |      |     |     |
+|r50k_base              |davinci                             |50257 |Pass      |      |     |     |
 |LlamaTokenizerFast     |meta-llama/Llama-2-7b               | 32000|Pass      |Pass  |100.0|100.0|
 |LlamaTokenizer         |meta-llama/Llama-2-7b               | 32000|Pass      |Pass  |100.0|100.0|
 |T5TokenizerFast        |google/flan-t5-small                | 32100|Fail      |Fail  |  0.0|  0.0|
