@@ -9,6 +9,10 @@ We tend to run into lots of training jargon so here's a glossary of terms.
 - GBS: Global Batch Size - refers to the total batch size per iteration and may include gradient accumulation, for pre-training its pretty large (e.g. 1024 or 2048).
 - GAS: Gradient Accumulation Steps - how many forward/backward cycles to perform before one full iteration is complete.
 
+## Memory
+
+Weights have to be loaded into the GPU memory of each GPU. We also have to load two other large sets into memory, gradients, which have a 1:1 ratio with weights, and optimizer state, if you’re using Adam its about 3 times the size of our weights (individual adaptive learning rates and estimates of first and second moments of the gradients). So if we’re doing FP32 training, each parameter/weight is 4 bytes (floating point 32 bits is equal to 4 bytes as 1 byte is 8 bits). So if we’re training a 7 billion parameter model, that’s about 28GB weights, 28GB gradients and 84GB optimizer states, a whopping 140GB in total.
+
 ## Parallelization
 
 In pre-training we need to scale beyond a single node to multiple nodes with network between them, how we distribute and parallelize this training is essential (both time and memory constrained). See the dedicated [parallelization](parallelization/README.md) section for more information on the various techniques.
