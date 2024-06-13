@@ -4,6 +4,7 @@
    - [Hardware](infrastructure/hardware/README.md)
    - [Alternative Accelerators](infrastructure/hardware/alternatives/README.md)
 2. Data Engineering
+   - [Common Crawl](dataengineering/cc/README.md)
 3. Pre-Training Stage
    - [Tokenization](pretraining/tokenization/README.md)
    - [Model Architecture](pretraining/architecture/README.md)
