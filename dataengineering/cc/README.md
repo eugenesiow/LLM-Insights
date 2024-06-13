@@ -2,18 +2,44 @@
 
 ## Introduction
 
-When it comes to using common crawl data for training LLMs there are a few very important points to note:
-1. There are [many collections](#collections) and each collection is labelled something like `CC-MAIN-2013-20` or `CC-MAIN-2019-09`. Each collection is a snapshot of a subset (albeit a large subset) of the internet at that point in time. There might be URL and content overlap between the snapshots, however, the [overlap between each collection](https://commoncrawl.github.io/cc-crawl-statistics/plots/crawloverlap) is relatively small (from close to 0% to 25%). So getting the **superset of all the collections will give you a more comprehensive picture** of publicly available web text on the internet. That's probably the base corpus you want to quality filter from for LLM pre-training.
-2. Common crawl releases a [variety of files and formats](#warc-vs-wet) with each collection. One major decision you'll need to make is whether to use WARCs, which have the raw html of each page collected, or WETs, which have just the (best effort) extraction of the webpage body text that common crawl kindly pre-processes for you. If you want the best quality (more cleanly remove the boilerplate of the webpage) you'll want to apply state-of-the-art extraction techniques to WARCs. The **tradeoff here will be the massive size of WARCs**, totalling 5.4PB from 97 collections from 2013 to 2024 - storing and processing becomes a more costly activity as compared to using the 708TB of WETs. 
+When it comes to using common crawl data for training LLMs there are a few important points to note:
+1. **You want the superset of all collections for comprehensiveness:** There are [many collections](#collections) and each collection is labelled something like `CC-MAIN-2013-20` or `CC-MAIN-2019-09`. Each collection is a snapshot of a subset (albeit a large subset) of the internet at that point in time. There might be URL and content overlap between the snapshots, however, the [overlap between each collection](https://commoncrawl.github.io/cc-crawl-statistics/plots/crawloverlap) is relatively small (it goes from near 0% to 25%). So getting the **superset of all the collections will give you a more comprehensive picture** of publicly available web text on the internet. That's probably the base corpus you want to quality filter from for LLM pre-training.
+2. **WARC vs WET decisions:** Common crawl releases a [variety of files and formats](#warc-vs-wet) with each collection. One major decision you'll need to make is whether to use WARCs, which have the raw html of each page collected, or WETs, which have just the (best effort) extraction of the webpage body text that common crawl kindly pre-processes for you. If you want the best quality (more cleanly remove the boilerplate of the webpage) you'll want to apply state-of-the-art extraction techniques to WARCs. The **tradeoff here will be the massive size of WARCs**, totalling 5.4PB from 97 collections from 2013 to 2024 - storing and processing becomes a more costly activity as compared to using the 708TB of WETs. 
 
 ### WARC vs WET
 
 #### WARC (Web ARChive) Format
 
-[WARC](https://iipc.github.io/warc-specifications/specifications/warc-format/warc-1.0/) is the industry standard for web archiving.  It stores request and response headers, additional metadata, and new record types like resource revisit, metadata, and conversion. It's suitable for large–scale web archiving and supports the archiving of complex digital resources. Common Crawl has used WARC since the `CC-MAIN-2013-20` collection.
+[WARC](https://iipc.github.io/warc-specifications/specifications/warc-format/warc-1.0/) is the industry standard for web archiving.  It stores request and response headers, additional metadata, and new record types like resource revisit, metadata, and conversion. It's suitable for large–scale web archiving and supports the archiving of complex digital resources. Common Crawl has used WARC since the `CC-MAIN-2013-20` collection (prior to that the [ARC format](https://commoncrawl.org/errata/arc-format-legacy-crawls) was used).
 
-WET (Web Extracted Text) Files
-These files are part of the Common Crawl dataset and contain extracted plain text from web content.  WET files only contain the body text of web pages, extracted from the HTML and excluding any HTML code, images, or other media.  This makes them useful for text analysis and natural language processing (NLP) tasks.
+The header of a document in a WARC file looks something like the example below. For the common crawl datasets, the content is 95% and above of [content-type text/HTML](https://commoncrawl.github.io/cc-crawl-statistics/plots/mimetypes).
+
+```
+WARC/1.0
+WARC-Type: response
+WARC-Date: 2023-11-29T19:37:32Z
+WARC-Record-ID: <urn:uuid:c52512d3-8616-40e7-9b2b-095ca5dca5a1>
+Content-Length: 77056
+Content-Type: application/http; msgtype=response
+WARC-Warcinfo-ID: <urn:uuid:369b5ad7-dae0-41c6-9ebd-9fb00aad1e4a>
+WARC-Concurrent-To: <urn:uuid:8dc593cc-6eeb-40fc-845d-0726bde5ec2f>
+WARC-IP-Address: 31.11.32.54
+WARC-Target-URI: https://www.antonaccisrl.it/getidm355/2075meofitems
+WARC-Payload-Digest: sha1:2ZPX6XYOT55QZSUEG3ADWH3HYEFRMJAV
+WARC-Block-Digest: sha1:M3WLR4GN2BHIWYZDE3GKMHBL6326UWJ6
+WARC-Identified-Payload-Type: text/html
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+X-Aruba2-Cache: NA
+X-Aruba-Cache: NA
+Date: Wed, 29 Nov 2023 19:37:32 GMT
+Content-Length: 76848
+```
+
+The header is followed by the content/body of the response. The WARC file just appends these WARC documents together and they are gzipped up. Since each WARC is multiline and concatanated together, parsing the WARCs requires properly detecting each WARC document. I would highly recommend using a battle-tested library like [warcio](https://github.com/webrecorder/warcio) to iterate over the archive files.
 
 #### WET (Web Extracted Text) Files
 
