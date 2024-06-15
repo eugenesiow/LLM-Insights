@@ -6,6 +6,8 @@ When it comes to using common crawl data for training LLMs there are a few impor
 1. **You want the superset of all collections for comprehensiveness:** There are [many collections](#collections) and each collection is labelled something like `CC-MAIN-2013-20` or `CC-MAIN-2019-09`. Each collection is a snapshot of a subset (albeit a large subset) of the internet at that point in time. There might be URL and content overlap between the snapshots, however, the [overlap between each collection](https://commoncrawl.github.io/cc-crawl-statistics/plots/crawloverlap) is relatively small (it goes from near 0% to 25%). So getting the **superset of all the collections will give you a more comprehensive picture** of publicly available web text on the internet. That's probably the base corpus you want to quality filter from for LLM pre-training.
 2. **WARC vs WET decisions:** Common crawl releases a [variety of files and formats](#warc-vs-wet) with each collection. One major decision you'll need to make is whether to use WARCs, which have the raw html of each page collected, or WETs, which have just the (best effort) extraction of the webpage body text that common crawl kindly pre-processes for you. If you want the best quality (more cleanly remove the boilerplate of the webpage) you'll want to apply state-of-the-art extraction techniques to WARCs. The **tradeoff here will be the massive size of WARCs**, totalling 5.4PB from 97 collections from 2013 to 2024 - storing and processing becomes a more costly activity as compared to using the 708TB of WETs. 
 
+## File Formats
+
 ### WARC vs WET
 
 #### WARC (Web ARChive) Format
@@ -46,6 +48,12 @@ The header is followed by the content/body of the response. The WARC file just a
 These files are part of the Common Crawl dataset and contain extracted plain text from web content.  WET files only contain the body text of web pages, extracted from the HTML and excluding any HTML code, images, or other media.  This makes them useful for text analysis and natural language processing (NLP) tasks.
 
 WET files are ideal for applications where only the text of web pages is needed, such as linguistic analysis, content categorisation, and other text–focused activities.
+
+### CC Index
+
+Each common crawl collection has a corresponding set of indexes, these are in the "ZipNum" CDX format (the same format that is used by the Wayback Machine at the Internet Archive). These indexes are sharded into 300 files, starting from `0` to `299` (e.g `cdx-00299.gz`).
+
+Check out the [CC Indexes](CC_INDEX.md) section to find out more on using them.
 
 ## Collections
 
