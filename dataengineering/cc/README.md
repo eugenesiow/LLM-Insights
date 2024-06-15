@@ -53,7 +53,7 @@ WET files are ideal for applications where only the text of web pages is needed,
 
 Each common crawl collection has a corresponding set of indexes, these are in the "ZipNum" CDX format (the same format that is used by the Wayback Machine at the Internet Archive). These indexes are sharded into 300 files, starting from `0` to `299` (e.g `cdx-00299.gz`).
 
-Check out the [CC Indexes](CC_INDEX.md) section to find out more on using them.
+Check out the dedicated [CC Index](CC_INDEX.md) page to find out more on using them, including parsing them, using offsets and doing URL and language filtering.
 
 ## Collections
 
