@@ -15,11 +15,13 @@
    - [Adapters](finetuning/adapters/)
 5. Alignment Stage
    - [Reducing Hallucination](alignment/hallucination/README.md)
-6. Inference Stage
+6. Evaluation Stage
+   - [Reasoning](evaluation/reasoning/README.md)
+7. Inference Stage
    - [Estimating Model Size](inference/README.md##estimating-model-size)
    - [Speed](inference/README.md#generative-inference-speed)
    - [Throughput](inference/README.md#generative-inference-throughput)
-7. Applications
+8. Applications
 
 ## Acknowledgements
 
