@@ -6,6 +6,12 @@ GPQA stands for [Graduate-Level Google-Proof Q&A Benchmark](https://arxiv.org/ab
 
 - **Google-proof argument.** The authors argue the questions are Google-proof as "the ground truth is not available to non-experts using easily-found internet resources". Concretely, they argue that highly skilled non-expert validators only reach 34% accuracy, despite spending on average over 30 minutes with unrestricted access to the web.
 
+### Links
+
+* Abstract: https://arxiv.org/abs/2311.12022
+* Homepage: https://github.com/idavidrein/gpqa/tree/main
+* Dataset: https://huggingface.co/datasets/Idavidrein/gpqa
+
 ### Example Questions
 
 Below are 6 example questions. 2 from each of the subdomains of chemistry, biology, and physics (respectively).
@@ -83,3 +89,224 @@ What could be the correct Kraus representation of the state 𝐸(𝜌)?
 - C) 𝐸(𝜌) = (1 − 𝑝)𝜌 + (𝑝/4)(𝑋𝜌𝑋 + 𝑌𝜌𝑌 + 𝑍𝜌𝑍)  
 - D) 𝐸(𝜌) = (1 − 𝑝)𝜌² + (𝑝/3)(𝑋𝜌²𝑋 + 𝑌𝜌²𝑌 + 𝑍𝜌²𝑍)  
 </details>
+
+### Implementation
+
+
+<details>
+<summary>Zeroshot</summary>
+
+```yaml
+dataset_path: Idavidrein/gpqa
+tag: gpqa
+output_type: multiple_choice
+process_docs: !function utils.process_docs
+training_split: train
+# Because huggingface dataset only has train split
+validation_split: train
+test_split: null
+doc_to_text: "What is the correct answer to this question:{{Question}}\nChoices:\n(A) {{choice1}}\n(B) {{choice2}}\n(C) {{choice3}}\n(D) {{choice4}}\nAnswer:"
+doc_to_target: answer
+doc_to_choice: ["(A)", "(B)", "(C)", "(D)"]
+num_fewshot: 0
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gpqa/zeroshot/_gpqa_zeroshot_yaml
+</details>
+
+
+<details>
+<summary>n-shot</summary>
+
+```yaml
+dataset_path: Idavidrein/gpqa
+tag: gpqa
+output_type: multiple_choice
+process_docs: !function utils.process_docs
+training_split: train
+# Because huggingface dataset only has train split
+validation_split: train
+test_split: null
+description: "Here are some example questions from experts. Answer the final question yourself, following the format of the previous questions exactly.\n"
+doc_to_text: "Question: {{Question}}\nChoices:\n(A) {{choice1}}\n(B) {{choice2}}\n(C) {{choice3}}\n(D) {{choice4}}\nAnswer:"
+doc_to_target: answer
+doc_to_choice: ["(A)", "(B)", "(C)", "(D)"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 2.0
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gpqa/n_shot/_gpqa_n_shot_yaml
+</details>
+
+
+<details>
+<summary>CoT Zeroshot</summary>
+
+```yaml
+dataset_path: Idavidrein/gpqa
+tag: gpqa
+output_type: generate_until
+process_docs: !function utils.process_docs
+training_split: train
+# Because huggingface dataset only has train split
+validation_split: train
+test_split: null
+doc_to_text: "What is the correct answer to this question:{{Question}}\nChoices:\n(A) {{choice1}}\n(B) {{choice2}}\n(C) {{choice3}}\n(D) {{choice4}}\nLet's think step by step: "
+doc_to_target: answer
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=The answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi_choice_regex"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
+generation_kwargs:
+  until:
+    - "</s>"
+  do_sample: false
+  temperature: 0.0
+num_fewshot: 0
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 1.0
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gpqa/cot_zeroshot/_gpqa_cot_zeroshot_yaml
+</details>
+
+<details>
+<summary>CoT n-shot</summary>
+
+```yaml
+dataset_path: Idavidrein/gpqa
+tag: gpqa
+output_type: generate_until
+process_docs: !function utils.process_docs
+training_split: train
+# Because huggingface dataset only has train split
+validation_split: train
+test_split: null
+description: "Here are some example questions from experts. Answer the final question yourself, following the format of the previous questions exactly.\n"
+doc_to_text: "Question: {{Question}}\nChoices:\n(A) {{choice1}}\n(B) {{choice2}}\n(C) {{choice3}}\n(D) {{choice4}}\nLet's think step by step: "
+doc_to_target: answer
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=The answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi_choice_regex"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
+generation_kwargs:
+  until:
+    - "</s>"
+  do_sample: false
+  temperature: 0.0
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 2.0
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gpqa/cot_n_shot/_gpqa_cot_n_shot_yaml
+</details>
+
+<details>
+<summary>Generative n-shot</summary>
+
+```yaml
+dataset_path: Idavidrein/gpqa
+tag: gpqa
+output_type: generate_until
+process_docs: !function utils.process_docs
+training_split: train
+# Because huggingface dataset only has train split
+validation_split: train
+test_split: null
+description: "Here are some example questions from experts. Answer the final question yourself, following the format of the previous questions exactly.\n"
+doc_to_text: "Question: {{Question}}\nChoices:\n(A) {{choice1}}\n(B) {{choice2}}\n(C) {{choice3}}\n(D) {{choice4}}\nAnswer:"
+doc_to_target: answer
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=The answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi_choice_regex"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
+generation_kwargs:
+  until:
+    - "</s>"
+    - "Question:"
+    - "<|im_end|>"
+  temperature: 0.0
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 2.0
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gpqa/generative/_gpqa_generative_n_shot_yaml
+</details>
+
+
+### Citation
+
+```
+@misc{rein2023gpqa,
+      title={GPQA: A Graduate-Level Google-Proof Q&A Benchmark},
+      author={David Rein and Betty Li Hou and Asa Cooper Stickland and Jackson Petty and Richard Yuanzhe Pang and Julien Dirani and Julian Michael and Samuel R. Bowman},
+      year={2023},
+      eprint={2311.12022},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
+```
