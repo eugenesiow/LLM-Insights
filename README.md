@@ -21,6 +21,7 @@
    - [Estimating Model Size](inference/README.md##estimating-model-size)
    - [Speed](inference/README.md#generative-inference-speed)
    - [Throughput](inference/README.md#generative-inference-throughput)
+   - [Guidance](inference/guidance/README.md)
 8. Applications
 
 ## Acknowledgements
