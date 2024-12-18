@@ -21,6 +21,12 @@ In pre-training we need to scale beyond a single node to multiple nodes with net
 
 Gradient accumulation is a way to virtually increase the batch size (simulate a larger batch size) during training, which is very useful when the available GPU memory is insufficient to accommodate the desired batch size. In gradient accumulation, gradients are computed for smaller batches and accumulated (usually summed or averaged) over multiple iterations instead of updating the model weights after every batch. Once the accumulated gradients reach the target "virtual" batch size, the model weights are updated with the accumulated gradients [2].
 
+## Hyperparameters
+
+### Learning Rate and Scheduling
+
+Learning rate is a critical hyperparameter for pre-training LLMs and a [scheduler](SCHEDULER.md) implements some scheduling strategy to dynamically adhyst the learning rate accordingly during the training run. During the start of training a large learning rate can quickly update parameters, potentially overshooting the optimal solution and causing instability, hence, warmup to increase the learning rate gradually is sometimes done. As the model continues to train, a smaller learning rate is usually desireable to avoid overfitting and prevent forgetting.
+
 ## References
 1. [Reiner Pope, Sholto Douglas, Aakanksha Chowdhery, Jacob Devlin, James Bradbury, Anselm Levskaya, Jonathan Heek, Kefan Xiao, Shivani Agrawal, & Jeff Dean. (2022). Efficiently Scaling Transformer Inference.](https://arxiv.org/abs/2211.05102)
 2. [Sebastian Raschka. (Mar 2023). Finetuning LLMs on a Single GPU Using Gradient Accumulation](https://lightning.ai/blog/gradient-accumulation/)
