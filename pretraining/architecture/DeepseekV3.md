@@ -1,6 +1,8 @@
 # Deepseek V3
 
-Deepseek V3 is a [Mixture of Experts](../moe/MoE.md) model. 
+Deepseek V3 is a [Mixture of Experts](../moe/MoE.md) model. It has a total of **671 billion parameters** (671,026,419,200). During inference, **37 billion** parameters (37,552,297,472) are activated.
+
+The model consists of **257 experts** (256 + 1) including a single shared expert. Each expert has **2.5 billion parameters** (2,554,331,136) and 9 experts (8 + 1) including the shared expert are activated during inference.
 
 ```
 DeepseekV3Config {
