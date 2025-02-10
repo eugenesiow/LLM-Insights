@@ -9,7 +9,7 @@
 
 | Model            | Params | Shared | Total Routed | Activated Routed | Fine-grain  | Affiliation    | Release   |
 |------------------|--------|--------|--------------|------------------|-------------|----------------|-----------|
-| DeepSeek-V3      | 671B   | 1      | 256          | 8                | Y           | DeepSeek-AI    | 2024.12   |
+| [DeepSeek-V3](../architecture/DeepseekV3.md)      | 671B   | 1      | 256          | 8                | Y           | DeepSeek-AI    | 2024.12   |
 | Hunyuan-Large    | 389B   | 1      | 16           | 1                | N           | Tencent        | 2024.11   |
 | GRIN-MoE         | 41.9B  | 0      | 16           | 2                | N           | Microsoft      | 2024.09   |
 | Phi-3            | 41.9B  | 0      | 16           | 2                | N           | Microsoft      | 2024.08   |
