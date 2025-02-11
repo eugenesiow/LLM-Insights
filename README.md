@@ -1,20 +1,20 @@
 # LLM Insights
 
 1. Infrastructure/Platform
-   - [Hardware](infrastructure/hardware/README.md)
-   - [Alternative Accelerators](infrastructure/hardware/alternatives/README.md)
+   - [Hardware](infrastructure/hardware/)
+   - [Alternative Accelerators](infrastructure/hardware/alternatives/)
 2. Data Engineering
    - [Common Crawl](dataengineering/cc/README.md)
 3. Pre-Training Stage
-   - [Tokenization](pretraining/tokenization/README.md)
-   - [Model Architecture](pretraining/architecture/README.md)
-   - [Multi-Node](pretraining/multi-node/README.md)
-   - [Training](pretraining/training/README.md)
-   - [Base Model Evaluation](pretraining/evaluation/README.md)
+   - [Tokenization](pretraining/tokenization/)
+   - [Model Architecture](pretraining/architecture/)
+   - [Multi-Node](pretraining/multi-node/)
+   - [Training](pretraining/training/)
+   - [Base Model Evaluation](pretraining/evaluation/)
 4. Fine-Tuning Stage
    - [Adapters](finetuning/adapters/)
 5. Alignment Stage
-   - [Reducing Hallucination](alignment/hallucination/README.md)
+   - [Reducing Hallucination](alignment/hallucination/)
 6. Evaluation Stage
    - [Reasoning](evaluation/reasoning/README.md)
 7. Inference Stage
@@ -23,6 +23,7 @@
    - [Throughput](inference/README.md#generative-inference-throughput)
    - [Guidance](inference/guidance/README.md)
 8. Applications
+   - [Agents](applications/agents/README.md)
 
 ## Acknowledgements
 
