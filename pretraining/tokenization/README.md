@@ -10,6 +10,13 @@
 
 ## All Tokenizers Are Not Made Equal
 
+### Metrics
+
+1. **Fertility** average number of tokens that are required to represent a word or document. Higher fertility scores correspond to weaker compression capabilities of the tokenizer.
+
+2. **Parity** assesses how fairly a tokenizer treats equivalent sentences in different languages. The premium is the ratio $\frac{|T(s_{A})|}{|T(s_{B})|}$, where $T$ is the tokenizer and $s_{A}$ and $s_{B}$ denote the sets of all sentences in the corpora of languages $A$ and $B$. A tokenizer $T$ can be said to achieve parity for language $A$ with respect to language $B$ if $\frac{|T(s_{A})|}{|T(s_{B})|} = 1$.
+
+
 ### Tests
 
 1. **Whitespace** Is whitespace tokenized properly? This is important for programming languages that depend on whitespace like Python. In this test we use the tokenizer to encode the text and decode it without special tokens (`skip_special_tokens=True`) and check for equivalence.
@@ -75,3 +82,4 @@ The Multipack sampler [6] is designed for padding-free distributed training of l
 7. https://en.wikipedia.org/wiki/Thai_(Unicode_block)
 8. [Taku Kudo, & John Richardson. (2018). SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing.](https://arxiv.org/abs/1808.06226)
 9. [Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, Aurelien Rodriguez, Armand Joulin, Edouard Grave, & Guillaume Lample. (2023). LLaMA: Open and Efficient Foundation Language Models.](https://arxiv.org/abs/2302.13971)
+10. [Ali, Mehdi, et al. “Tokenizer Choice for LLM Training: Negligible or Crucial?” ArXiv.org, 12 Oct. 2023, arxiv.org/abs/2310.08754.](https://arxiv.org/abs/2310.08754)
