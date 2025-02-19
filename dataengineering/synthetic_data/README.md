@@ -3,7 +3,7 @@
 
 ## Fineweb-edu
 
-[Fineweb](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1) used created a set of 450,000 samples (from the web) with scores from 0 to 5 of educational value, judged by Llama3, to train a [classifier](https://huggingface.co/HuggingFaceFW/fineweb-edu-classifier) to produce the [fineweb-edu corpus](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu).
+[Fineweb](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1) used created [a set](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu-llama3-annotations) of 450,000 samples (from the web) with scores from 0 to 5 of educational value, judged by Llama3, to train a [classifier](https://huggingface.co/HuggingFaceFW/fineweb-edu-classifier) to produce the [fineweb-edu corpus](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu).
 
 The prompt used with Llama3 to get the educational value score is shown below:
 
