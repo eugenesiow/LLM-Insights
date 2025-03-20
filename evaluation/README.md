@@ -2,6 +2,19 @@
 
 Evaluations generally consist of some datasets with ground truth answers and some code to run them (e.g. an evaluation harness).
 
+## Evaluating Capabilities
+
+1. [General](general/) - knowledge, language ability (e.g. reading comprehesion), broad/multi-domain.
+2. [Steerability](steerability/) - instruction-following ability.
+3. [Math](math/) - solving math problems, math reasoning or math programming problems.
+4. [Reasoning](reasoning/) - logical thinking, making inferences, and drawing conclusions from given information; usually harder problems require multiple steps.
+5. [Coding](coding/) - writing programming code, doing software engineering and developing applications.
+6. [Factuality](factuality/) - ability to produce accurate and truthful information.
+7. [Multilingual](multilingual/) - performance on languages other than English and especially on low-resource languages.
+8. [Image](image/) - multimodal image understanding, knowledge, advanced perception and multimodal reasoning ability.
+9. [Audio](audio/) - multimodal audio understanding, end-to-end speech-to-text translation, etc.
+10. [Video](video/) - multimodal video language understanding, long-form video understanding, etc.
+
 ## Evaluation Coverage
 
 | Capability              | Evaluation Benchmark | License    | o3-mini | claude-3.7-sonnet | gemini-2.0 | llama-3.3 | grok-2 | mistral-small-3.1 | olmo-2 | openllm-leaderboard |
@@ -12,7 +25,7 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | General                 | MMLU-Pro             | MIT        |         |                   | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
 | Steerability            | [IFEval](steerability/ifeval.md)               | Apache 2.0 |         | ✓                 |            | ✓         |        |                   | ✓      | ✓                   |
 | Image                   | MMMU                 |            |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |
-| Coding                  | HumanEval            |            |         |                   |            | ✓         | ✓      | ✓                 |        |                     |
+| Coding                  | [HumanEval](coding/humaneval.md)            |            |         |                   |            | ✓         | ✓      | ✓                 |        |                     |
 | Factuality              | SimpleQA             |            | ✓       |                   | ✓          |           |        | ✓                 |        |                     |
 | General                 | [BBH](general/bbh.md)                  | MIT        |         |                   |            |           |        |                   | ✓      | ✓                   |
 | Math                    | AIME24               | MIT        | ✓       | ✓                 |            |           |        |                   |        |                     |
@@ -60,20 +73,6 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | Code                    | CodeELO              |            |         |                   |            |           |        |                   |        |                     |
 | Reasoning               | SuperGPQA            |            |         |                   |            |           |        |                   |        |                     |
 | Code                    | SWE-Lancer           |            |         |                   |            |           |        |                   |        |                     |
-
-
-## Evaluating Capabilities
-
-1. [General](general/) - knowledge, language ability (e.g. reading comprehesion), broad/multi-domain.
-2. [Steerability](steerability/) - instruction-following ability.
-3. [Math](math/) - solving math problems, math reasoning or math programming problems.
-4. [Reasoning](reasoning/) - logical thinking, making inferences, and drawing conclusions from given information; usually harder problems require multiple steps.
-5. [Coding](coding/) - writing programming code, doing software engineering and developing applications.
-6. [Factuality](factuality/) 
-7. [Multilingual](multilingual/) 
-8. [Image](image/) 
-9. [Audio](audio/) 
-10. [Video](video/) 
 
 ## General Notes
 
