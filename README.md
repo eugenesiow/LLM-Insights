@@ -16,6 +16,7 @@
 5. Alignment Stage
    - [Reducing Hallucination](alignment/hallucination/)
 6. Evaluation Stage
+   - [Overview](evaluation/README.md)
    - [Reasoning](evaluation/reasoning/README.md)
 7. Inference Stage
    - [Estimating Model Size](inference/README.md##estimating-model-size)
