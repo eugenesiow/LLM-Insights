@@ -25,8 +25,8 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | General                 | [MMLU-Pro](general/mmlu.md)             | MIT        |         |                   | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
 | Steerability            | [IFEval](steerability/ifeval.md)               | Apache 2.0 |         | ✓                 |            | ✓         |        |                   | ✓      | ✓                   |
 | Image                   | [MMMU](image/mmmu.md)                 | Apache 2.0           |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |
-| Coding                  | [HumanEval](coding/humaneval.md)            |            |         |                   |            | ✓         | ✓      | ✓                 |        |                     |
-| Factuality              | SimpleQA             |            | ✓       |                   | ✓          |           |        | ✓                 |        |                     |
+| Coding                  | [HumanEval](coding/humaneval.md)            | MIT           |         |                   |            | ✓         | ✓      | ✓                 |        |                     |
+| Factuality              | [SimpleQA](factuality/simpleqa.md)             | MIT           | ✓       |                   | ✓          |           |        | ✓                 |        |                     |
 | General                 | [BBH](general/bbh.md)                  | MIT        |         |                   |            |           |        |                   | ✓      | ✓                   |
 | Math                    | AIME24               | MIT        | ✓       | ✓                 |            |           |        |                   |        |                     |
 | Math                    | [GSM8K](math/gsm8k.md)                | MIT        |         |                   |            | ✓         |        |                   | ✓      |                     |
