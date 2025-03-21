@@ -69,7 +69,7 @@ Verifiable Instructions: [ "detectable_content:number_placeholders" ]
 
 ## Implementation
 
-Below we show [configurations](https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/ifeval) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
+Below are [configurations](https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/ifeval) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
 
 <details>
 <summary>Zeroshot</summary>

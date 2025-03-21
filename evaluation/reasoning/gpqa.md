@@ -91,7 +91,7 @@ What could be the correct Kraus representation of the state 𝐸(𝜌)?
 
 ## Implementation
 
-Below we show [configurations](https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gpqa) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
+Below are [configurations](https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gpqa) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
 
 <details>
 <summary>Zeroshot</summary>

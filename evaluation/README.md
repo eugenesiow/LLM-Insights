@@ -24,7 +24,7 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | General                 | [MMLU](general/mmlu.md)                 | MIT        | ✓       |                   |            | ✓         | ✓      | ✓                 | ✓      |                     |
 | General                 | [MMLU-Pro](general/mmlu.md)             | MIT        |         |                   | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
 | Steerability            | [IFEval](steerability/ifeval.md)               | Apache 2.0 |         | ✓                 |            | ✓         |        |                   | ✓      | ✓                   |
-| Image                   | MMMU                 |            |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |
+| Image                   | [MMMU](image/mmmu.md)                 | Apache 2.0           |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |
 | Coding                  | [HumanEval](coding/humaneval.md)            |            |         |                   |            | ✓         | ✓      | ✓                 |        |                     |
 | Factuality              | SimpleQA             |            | ✓       |                   | ✓          |           |        | ✓                 |        |                     |
 | General                 | [BBH](general/bbh.md)                  | MIT        |         |                   |            |           |        |                   | ✓      | ✓                   |

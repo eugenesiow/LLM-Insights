@@ -74,7 +74,7 @@ def check(candidate):
 
 NOTE: See the official implementation of the task: https://github.com/openai/grade-school-math/blob/master/grade_school_math/calculator.py.
 
-Below we show [configurations](https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/gsm8k) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
+Below are [configurations](https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/gsm8k) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
 
 
 <details>
