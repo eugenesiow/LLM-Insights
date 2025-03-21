@@ -21,8 +21,8 @@ Evaluations generally consist of some datasets with ground truth answers and som
 |-------------------------|----------------------|------------|---------|-------------------|------------|-----------|--------|-------------------|--------|---------------------|
 | Math                    | [MATH](math/math.md)                 | MIT        | ✓       | ✓                 | ✓          | ✓         | ✓      | ✓                 | ✓      | ✓                   |
 | Reasoning               | [GPQA](reasoning/gpqa.md)                 | CC-BY-4.0  | ✓       | ✓                 | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
-| General                 | MMLU                 | MIT        | ✓       |                   |            | ✓         | ✓      | ✓                 | ✓      |                     |
-| General                 | MMLU-Pro             | MIT        |         |                   | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
+| General                 | [MMLU](general/mmlu.md)                 | MIT        | ✓       |                   |            | ✓         | ✓      | ✓                 | ✓      |                     |
+| General                 | [MMLU-Pro](general/mmlu.md)             | MIT        |         |                   | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
 | Steerability            | [IFEval](steerability/ifeval.md)               | Apache 2.0 |         | ✓                 |            | ✓         |        |                   | ✓      | ✓                   |
 | Image                   | MMMU                 |            |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |
 | Coding                  | [HumanEval](coding/humaneval.md)            |            |         |                   |            | ✓         | ✓      | ✓                 |        |                     |
