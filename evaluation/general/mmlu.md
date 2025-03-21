@@ -179,6 +179,286 @@ Question: An unknown substance is found to have a high melting point. In additio
 Answer: c
 </details>
 
+## Implementation
+
+Below are [configurations](https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/mmlu) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
+
+### MMLU
+
+<details>
+<summary>Default - Choices in Context and Answer Letters in Continuation</summary>
+
+```yaml
+dataset_path: hails/mmlu_no_train # a copy of `cais/mmlu` with no auxiliary_train split
+test_split: test
+fewshot_split: dev
+fewshot_config:
+  sampler: first_n
+output_type: multiple_choice
+doc_to_text: "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:"
+doc_to_choice: ["A", "B", "C", "D"]
+doc_to_target: answer
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
+dataset_kwargs:
+  trust_remote_code: true
+```
+
+```yaml
+group: mmlu
+task:
+  - mmlu_stem
+  - mmlu_other
+  - mmlu_social_sciences
+  - mmlu_humanities
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+metadata:
+  version: 2
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/mmlu/default
+</details>
+
+<details>
+<summary>Continuation - Cloze-style Variant,  Without Choices in Context and Full Answer Choice in Continuation</summary>
+
+```yaml
+dataset_path: hails/mmlu_no_train # a copy of `cais/mmlu` with no auxiliary_train split
+output_type: multiple_choice
+test_split: test
+fewshot_split: dev
+fewshot_config:
+  sampler: first_n
+doc_to_text: "Question: {{question.strip()}}\nAnswer:"
+doc_to_choice: "{{choices}}"
+doc_to_target: "{{answer}}"
+metadata:
+  version: 1.0
+dataset_kwargs:
+  trust_remote_code: true
+```
+
+```yaml
+group: mmlu_continuation
+group_alias: mmlu (continuation)
+task:
+  - group: stem
+    task:
+      - mmlu_continuation_stem
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: other
+    task:
+      - mmlu_continuation_other
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: social sciences
+    task:
+      - mmlu_continuation_social_sciences
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+  - group: humanities
+    task:
+      - mmlu_continuation_humanities
+    aggregate_metric_list:
+      - metric: acc
+        weight_by_size: True
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+metadata:
+  version: 2
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/mmlu/continuation
+</details>
+
+<details>
+<summary>Generative - Choices in Context, LLM Generates Answer, Parsed by Regex for Answer Letter</summary>
+
+```yaml
+dataset_path: hails/mmlu_no_train # a copy of `cais/mmlu` with no auxiliary_train split
+test_split: test
+fewshot_split: dev
+fewshot_config:
+  sampler: first_n
+output_type: generate_until
+doc_to_text: "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:"
+doc_to_target: "{{['A', 'B', 'C', 'D'][answer]}}"
+generation_kwargs:
+  until:
+    - "</s>"
+    - "\n"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_punctuation: true
+    ignore_case: true
+filter_list:
+  - name: get_response
+    filter:
+      # Filter everything after the first break line
+      - function: "regex"
+        regex_pattern: "^(.*?)(?=\\n|$)"
+      # Remove leading white spaces
+      - function: remove_whitespace
+      # function to ignore right white spaces or line breaks
+      - function: "regex"
+        regex_pattern: "^(.*?)\\s*$"
+      - function: take_first
+metadata:
+  version: 3.0
+dataset_kwargs:
+  trust_remote_code: true
+```
+
+```yaml
+group: mmlu_generative
+group_alias: mmlu (generative)
+task:
+  - group: stem
+    task:
+      - mmlu_stem_generative
+    aggregate_metric_list:
+      - metric: exact_match
+        weight_by_size: true
+        filter_list: get_response
+  - group: other
+    task:
+      - mmlu_other_generative
+    aggregate_metric_list:
+      - metric: exact_match
+        weight_by_size: true
+        filter_list: get_response
+  - group: social sciences
+    task:
+      - mmlu_social_sciences_generative
+    aggregate_metric_list:
+      - metric: exact_match
+        weight_by_size: true
+        filter_list: get_response
+  - group: humanities
+    task:
+      - mmlu_humanities_generative
+    aggregate_metric_list:
+      - metric: exact_match
+        weight_by_size: true
+        filter_list: get_response
+aggregate_metric_list:
+  - aggregation: mean
+    metric: exact_match
+    weight_by_size: true
+    filter_list: get_response
+metadata:
+  version: 3
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/mmlu/generative
+</details>
+
+### MMLU-Pro
+
+<details>
+<summary>Generative - CoT</summary>
+
+```yaml
+dataset_path: TIGER-Lab/MMLU-Pro
+test_split: test
+fewshot_split: validation
+fewshot_config:
+  sampler: first_n
+  doc_to_text: !function utils.fewshot_to_text
+  doc_to_target: ""
+output_type: generate_until
+doc_to_text: !function utils.doc_to_text
+doc_to_target: answer
+filter_list:
+  - name: "custom-extract"
+    filter:
+      - function: "regex"
+        regex_pattern: 'answer is \(?([ABCDEFGHIJ])\)?'
+        # regex_pattern: r".*[aA]nswer:\s*([A-J])",
+      - function: "take_first"
+generation_kwargs:
+  until:
+    - "</s>"
+    - "Q:"
+    - "<|im_end|>"
+  do_sample: false
+  temperature: 0.0
+num_fewshot: 5
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 1.0
+```
+
+```yaml
+group: mmlu_pro
+task:
+  - mmlu_pro_biology
+  - mmlu_pro_business
+  - mmlu_pro_chemistry
+  - mmlu_pro_computer_science
+  - mmlu_pro_economics
+  - mmlu_pro_engineering
+  - mmlu_pro_health
+  - mmlu_pro_history
+  - mmlu_pro_law
+  - mmlu_pro_math
+  - mmlu_pro_other
+  - mmlu_pro_philosophy
+  - mmlu_pro_physics
+  - mmlu_pro_psychology
+aggregate_metric_list:
+  - aggregation: mean
+    metric: exact_match
+    weight_by_size: true
+    filter_list: custom-extract
+metadata:
+  version: 2.0
+```
+
+```python
+def format_cot_example(example, including_answer=True):
+    prompt = "Question:\n"
+    question = example["question"]
+    options = example["options"]
+    prompt += question + "\n"
+    prompt += "Options:\n"
+    for i, opt in enumerate(options):
+        prompt += "{}. {}\n".format(choices[i], opt)
+    if including_answer:
+        cot_content = example["cot_content"].replace(
+            "A: Let's think step by step.", "Answer: Let's think step by step."
+        )
+        prompt += cot_content + "\n\n"
+    else:
+        prompt += "Answer: Let's think step by step."
+    return prompt
+
+
+doc_to_text = partial(format_cot_example, including_answer=False)
+fewshot_to_text = partial(format_cot_example, including_answer=True)
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/mmlu_pro
+</details>
+
 ## Citation
 
 Original **MMLU** Paper: [Measuring Massive Multitask Language Understanding](https://arxiv.org/abs/2009.03300)

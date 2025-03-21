@@ -47,7 +47,7 @@ Below are 3 example tasks. For each example task, 3 samples are listed. They are
 
 ## Implementation
 
-Below we show [configurations](https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/bbh) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
+Below are [configurations](https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/bbh) from [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
 
 
 <details>
