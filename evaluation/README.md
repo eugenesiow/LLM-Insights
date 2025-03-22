@@ -42,7 +42,7 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | Math                    | HiddenMath           | -          |         |                   | ✓          |           |        |                   |        |                     |
 | Math                    | FrontierMath         |            | ✓       |                   |            |           |        |                   |        |                     |
 | Code                    | Codeforces           |            | ✓       |                   |            |           |        |                   |        |                     |
-| Reasoning               | ARC Challenge        |            |         |                   |            | ✓         |        |                   |        |                     |
+| Reasoning               | [ARC Challenge](reasoning/arc.md)        | CC-BY-SA-4.0           |         |                   |            | ✓         |        |                   |        |                     |
 | Reasoning, Long-context | MUSR                 |            |         |                   |            |           |        |                   |        | ✓                   |
 | Long-context            | MRCR (1M)            |            |         |                   | ✓          |           |        |                   |        |                     |
 | Code                    | Bird-SQL (Dev)       |            |         |                   | ✓          |           |        |                   |        |                     |

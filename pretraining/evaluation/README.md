@@ -14,6 +14,8 @@
     - [BoolQ](#boolq)
     - [PIQA](#piqa)
 
+See the [evaluation section](../evaluation/) for more details.
+
 The types of evaluations and the models evaluated are not meant to be exhaustive, there are leaderboards like the [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) for that. What is presented is a basic set of evaluations that we used to sanity check our models during training, comparing them against how the leading (or most popular) base models of that parameter count were performing.
 
 Running each of these evaluations on our own (even if results have previously been reported somewhere) let's us work out any kinks in the evaluation code base (e.g. multi-GPU, different architectures, etc.) on our own hardware.

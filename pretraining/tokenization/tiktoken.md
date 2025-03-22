@@ -35,3 +35,6 @@ References:
 - https://github.com/huggingface/transformers/blob/main/src/transformers/convert_slow_tokenizer.py#L1474
 - https://github.com/huggingface/transformers/blob/main/src/transformers/integrations/tiktoken.py
 - https://github.com/huggingface/transformers/issues/34221
+- https://gist.github.com/xenova/a452a6474428de0182b17605a98631ee
+- https://github.com/huggingface/transformers/issues/31187
+- https://huggingface.co/meta-llama/Meta-Llama-3-8B/discussions/12

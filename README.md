@@ -10,14 +10,22 @@
    - [Model Architecture](pretraining/architecture/)
    - [Multi-Node](pretraining/multi-node/)
    - [Training](pretraining/training/)
-   - [Base Model Evaluation](pretraining/evaluation/)
 4. Fine-Tuning Stage
    - [Adapters](finetuning/adapters/)
 5. Alignment Stage
    - [Reducing Hallucination](alignment/hallucination/)
 6. Evaluation Stage
    - [Overview](evaluation/README.md)
-   - [Reasoning](evaluation/reasoning/README.md)
+   - [General](evaluation/general/) - knowledge, language ability (e.g. reading comprehesion), broad/multi-domain.
+   - [Steerability](evaluation/steerability/) - instruction-following ability.
+   - [Math](evaluation/math/) - solving math problems, math reasoning or math programming problems.
+   - [Reasoning](evaluation/reasoning/) - logical thinking, making inferences, and drawing conclusions from given information; usually harder problems require multiple steps.
+   - [Coding](evaluation/coding/) - writing programming code, doing software engineering and developing applications.
+   - [Factuality](evaluation/factuality/) - ability to produce accurate and truthful information.
+   - [Multilingual](evaluation/multilingual/) - performance on languages other than English and especially on low-resource languages.
+   - [Image](evaluation/image/) - multimodal image understanding, knowledge, advanced perception and multimodal reasoning ability.
+   - [Audio](evaluation/audio/) - multimodal audio understanding, end-to-end speech-to-text translation, etc.
+   - [Video](evaluation/video/) - multimodal video language understanding, long-form video understanding, etc.
 7. Inference Stage
    - [Estimating Model Size](inference/README.md##estimating-model-size)
    - [Speed](inference/README.md#generative-inference-speed)
