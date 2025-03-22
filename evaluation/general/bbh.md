@@ -2,7 +2,7 @@
 
 [Beyond the Imitation Game Benchmark (BIG-bench)](https://github.com/google/BIG-bench) is a diverse evaluation suite with [214 tasks](https://github.com/google/BIG-bench/blob/main/bigbench/benchmark_tasks/README.md) for language models (e.g. answering multiple-choice questions distinguishing [cause and effect](https://github.com/google/BIG-bench/tree/main/bigbench/benchmark_tasks/cause_and_effect)). The benchmark is intended to probe large language models for their capabilities. 
 
-[BIG-Bench Hard (BBH)](https://github.com/suzgunmirac/BIG-Bench-Hard) focuses on a suite of only 23 challenging BIG-Bench tasks. They were selected in this subset as they were the tasks for which prior language model evaluations did not outperform the average human-rater (circa 2022), e.g. [causal judgment](https://github.com/suzgunmirac/BIG-Bench-Hard/blob/main/bbh/causal_judgement.json) or [multi-step arithmetic](https://github.com/suzgunmirac/BIG-Bench-Hard/blob/main/bbh/multistep_arithmetic_two.json).
+[BIG-Bench Hard (BBH)](https://github.com/suzgunmirac/BIG-Bench-Hard) focuses on a suite of only 23 challenging BIG-Bench tasks. They were selected in this subset as they were the tasks for which prior language model evaluations did not outperform the average human-rater (circa 2022), e.g. [causal judgment](https://github.com/suzgunmirac/BIG-Bench-Hard/blob/main/bbh/causal_judgement.json) or [multi-step arithmetic](https://github.com/suzgunmirac/BIG-Bench-Hard/blob/main/bbh/multistep_arithmetic_two.json), following challenging instructions such as navigation, logical deduction, and fallacy detection.
 
 ## Links
 

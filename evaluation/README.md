@@ -32,7 +32,7 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | Math                    | [GSM8K](math/gsm8k.md)                | MIT        |         |                   |            | ✓         |        |                   | ✓      |                     |
 | Code                    | LiveCodeBench (v5)   |            | ✓       |                   | ✓          |           |        |                   |        |                     |
 | Coding                  | SWE-Bench Verified   |            | ✓       | ✓                 |            |           |        |                   |        |                     |
-| Multilingual            | MGSM                 |            | ✓       |                   |            | ✓         |        |                   |        |                     |
+| Multilingual            | [MGSM](multilingual/mgsm.md)                 | CC-BY-SA-4.0            | ✓       |                   |            | ✓         |        |                   |        |                     |
 | Image                   | MathVista            |            |         |                   |            |           | ✓      | ✓                 |        |                     |
 | Image                   | DocVQA               |            |         |                   |            |           | ✓      | ✓                 |        |                     |
 | General                 | TriviaQA             |            |         |                   |            |           |        | ✓                 |        |                     |
