@@ -17,62 +17,69 @@ Evaluations generally consist of some datasets with ground truth answers and som
 
 ## Evaluation Coverage
 
-| Capability              | Evaluation Benchmark | License    | o3-mini | claude-3.7-sonnet | gemini-2.0 | llama-3.3 | grok-2 | mistral-small-3.1 | olmo-2 | openllm-leaderboard |
-|-------------------------|----------------------|------------|---------|-------------------|------------|-----------|--------|-------------------|--------|---------------------|
-| Math                    | [MATH](math/math.md)                 | MIT        | ✓       | ✓                 | ✓          | ✓         | ✓      | ✓                 | ✓      | ✓                   |
-| Reasoning               | [GPQA](reasoning/gpqa.md)                 | CC-BY-4.0  | ✓       | ✓                 | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
-| General                 | [MMLU](general/mmlu.md)                 | MIT        | ✓       |                   |            | ✓         | ✓      | ✓                 | ✓      |                     |
-| General                 | [MMLU-Pro](general/mmlu.md)             | MIT        |         |                   | ✓          | ✓         | ✓      | ✓                 |        | ✓                   |
-| Steerability            | [IFEval](steerability/ifeval.md)               | Apache 2.0 |         | ✓                 |            | ✓         |        |                   | ✓      | ✓                   |
-| Image                   | [MMMU](image/mmmu.md)                 | Apache 2.0           |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |
-| Coding                  | [HumanEval](coding/humaneval.md)            | MIT           |         |                   |            | ✓         | ✓      | ✓                 |        |                     |
-| Factuality              | [SimpleQA](factuality/simpleqa.md)             | MIT           | ✓       |                   | ✓          |           |        | ✓                 |        |                     |
-| General                 | [BBH](general/bbh.md)                  | MIT        |         |                   |            |           |        |                   | ✓      | ✓                   |
-| Math                    | AIME24               | MIT        | ✓       | ✓                 |            |           |        |                   |        |                     |
-| Math                    | [GSM8K](math/gsm8k.md)                | MIT        |         |                   |            | ✓         |        |                   | ✓      |                     |
-| Code                    | LiveCodeBench (v5)   |            | ✓       |                   | ✓          |           |        |                   |        |                     |
-| Coding                  | SWE-Bench Verified   |            | ✓       | ✓                 |            |           |        |                   |        |                     |
-| Multilingual            | [MGSM](multilingual/mgsm.md)                 | CC-BY-SA-4.0            | ✓       |                   |            | ✓         |        |                   |        |                     |
-| Image                   | MathVista            |            |         |                   |            |           | ✓      | ✓                 |        |                     |
-| Image                   | DocVQA               |            |         |                   |            |           | ✓      | ✓                 |        |                     |
-| General                 | TriviaQA             |            |         |                   |            |           |        | ✓                 |        |                     |
-| Reasoning               | DROP                 |            |         |                   |            |           |        |                   | ✓      |                     |
-| Steerability            | AlpacaEval V2        |            |         |                   |            |           |        |                   | ✓      |                     |
-| General                 | PopQA                |            |         |                   |            |           |        |                   | ✓      |                     |
-| Math                    | HiddenMath           | -          |         |                   | ✓          |           |        |                   |        |                     |
-| Math                    | FrontierMath         |            | ✓       |                   |            |           |        |                   |        |                     |
-| Code                    | Codeforces           |            | ✓       |                   |            |           |        |                   |        |                     |
-| Reasoning               | [ARC Challenge](reasoning/arc.md)        | CC-BY-SA-4.0           |         |                   |            | ✓         |        |                   |        |                     |
-| Reasoning, Long-context | MUSR                 |            |         |                   |            |           |        |                   |        | ✓                   |
-| Long-context            | MRCR (1M)            |            |         |                   | ✓          |           |        |                   |        |                     |
-| Code                    | Bird-SQL (Dev)       |            |         |                   | ✓          |           |        |                   |        |                     |
-| Code                    | MBPP EvalPlus        |            |         |                   |            | ✓         |        |                   |        |                     |
-| Factuality              | FACTS Grounding      |            |         |                   | ✓          |           |        |                   |        |                     |
-| Factuality              | TruthfulQA           |            |         |                   |            |           |        |                   | ✓      |                     |
-| Multilingual            | Global MMLU (Lite)   |            |         |                   | ✓          |           |        |                   |        |                     |
-| Multilingual            | MMMLU                |            |         | ✓                 |            |           |        |                   |        |                     |
-| Image                   | MMMU-Pro             |            |         |                   |            |           |        | ✓                 |        |                     |
-| Image                   | MM-MT-Bench          |            |         |                   |            |           |        | ✓                 |        |                     |
-| Image                   | ChartQA              |            |         |                   |            |           |        | ✓                 |        |                     |
-| Image                   | AI2D                 |            |         |                   |            |           |        | ✓                 |        |                     |
-| Audio                   | CoVoST2 (21 lang)    |            |         |                   | ✓          |           |        |                   |        |                     |
-| Video                   | EgoSchema (test)     |            |         |                   | ✓          |           |        |                   |        |                     |
-| Agentic                 | TAU-Bench            |            |         | ✓                 |            |           |        |                   |        |                     |
-| Tool Use                | BFCLv2               |            |         |                   |            | ✓         |        |                   |        |                     |
-| Tool Use                | Nexus                |            |         |                   |            | ✓         |        |                   |        |                     |
-| Long-context            | ZeroSCROLLS/QuALITY  |            |         |                   |            | ✓         |        |                   |        |                     |
-| Long-context            | InfiniteBench/En.MC  |            |         |                   |            | ✓         |        |                   |        |                     |
-| Long-context            | NIH/Multi-needle     |            |         |                   |            | ✓         |        |                   |        |                     |
-| Long-context            | LongBench v2         |            |         |                   |            |           |        | ✓                 |        |                     |
-| Long-context            | RULER                |            |         |                   |            |           |        | ✓                 |        |                     |
-| Safety                  | XSTest               |            | ✓       |                   |            |           |        |                   |        |                     |
-| Safety                  | Tülu 3 Safety        |            |         |                   |            |           |        |                   | ✓      |                     |
-| Hallucinations          | PersonQA             |            | ✓       |                   |            |           |        |                   |        |                     |
-| Jailbreaking            | StrongREJECT         |            | ✓       |                   |            |           |        |                   |        |                     |
-| Code, Reasoning         | IOI                  | CC-BY      |         |                   |            |           |        |                   |        |                     |
-| Code                    | CodeELO              |            |         |                   |            |           |        |                   |        |                     |
-| Reasoning               | SuperGPQA            |            |         |                   |            |           |        |                   |        |                     |
-| Code                    | SWE-Lancer           |            |         |                   |            |           |        |                   |        |                     |
+| Capability              | Evaluation                         | License      | o3-mini | claude-3.7-sonnet | gemini-2.0 | llama-3.3 | grok-2 | mistral-small-3.1 | olmo-2 | openllm-leaderboard | deepseek-r1 |
+|-------------------------|------------------------------------|--------------|---------|-------------------|------------|-----------|--------|-------------------|--------|---------------------|-------------|
+| Math                    | [MATH](math/math.md)               | MIT          | ✓       | ✓                 | ✓          | ✓         | ✓      | ✓                 | ✓      | ✓                   | ✓           |
+| Reasoning               | [GPQA](reasoning/gpqa.md)          | CC-BY-4.0    | ✓       | ✓                 | ✓          | ✓         | ✓      | ✓                 |        | ✓                   | ✓           |
+| General                 | [MMLU](general/mmlu.md)            | MIT          | ✓       |                   |            | ✓         | ✓      | ✓                 | ✓      |                     | ✓           |
+| General                 | [MMLU-Pro](general/mmlu.md)        | MIT          |         |                   | ✓          | ✓         | ✓      | ✓                 |        | ✓                   | ✓           |
+| Steerability            | [IFEval](steerability/ifeval.md)   | Apache 2.0   |         | ✓                 |            | ✓         |        |                   | ✓      | ✓                   | ✓           |
+| Factuality              | [SimpleQA](factuality/simpleqa.md) | MIT          | ✓       |                   | ✓          |           |        | ✓                 |        |                     | ✓           |
+| Image                   | [MMMU](image/mmmu.md)              | Apache 2.0   |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |             |
+| Math                    | AIME24                             | MIT          | ✓       | ✓                 |            |           |        |                   |        |                     | ✓           |
+| Coding                  | LiveCodeBench (v5)                 |              | ✓       |                   | ✓          |           |        |                   |        |                     | ✓           |
+| Coding                  | SWE-Bench Verified                 |              | ✓       | ✓                 |            |           |        |                   |        |                     | ✓           |
+| Coding                  | [HumanEval](coding/humaneval.md)   | MIT          |         |                   |            | ✓         | ✓      | ✓                 |        |                     |             |
+| General                 | [BBH](general/bbh.md)              | MIT          |         |                   |            |           |        |                   | ✓      | ✓                   |             |
+| Reasoning               | [DROP](reasoning/drop.md)          | CC-BY-4.0    |         |                   |            |           |        |                   | ✓      |                     | ✓           |
+| Steerability            | AlpacaEval V2                      |              |         |                   |            |           |        |                   | ✓      |                     | ✓           |
+| Math                    | [GSM8K](math/gsm8k.md)             | MIT          |         |                   |            | ✓         |        |                   | ✓      |                     |             |
+| Coding                  | Codeforces                         |              | ✓       |                   |            |           |        |                   |        |                     | ✓           |
+| Multilingual            | [MGSM](multilingual/mgsm.md)       | CC-BY-SA-4.0 | ✓       |                   |            | ✓         |        |                   |        |                     |             |
+| Image                   | MathVista                          |              |         |                   |            |           | ✓      | ✓                 |        |                     |             |
+| Image                   | DocVQA                             |              |         |                   |            |           | ✓      | ✓                 |        |                     |             |
+| General                 | TriviaQA                           |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| General                 | PopQA                              |              |         |                   |            |           |        |                   | ✓      |                     |             |
+| Math                    | HiddenMath                         | -            |         |                   | ✓          |           |        |                   |        |                     |             |
+| Math                    | FrontierMath                       |              | ✓       |                   |            |           |        |                   |        |                     |             |
+| Reasoning               | [ARC Challenge](reasoning/arc.md)  | CC-BY-SA-4.0 |         |                   |            | ✓         |        |                   |        |                     |             |
+| Reasoning, Long-context | MUSR                               |              |         |                   |            |           |        |                   |        | ✓                   |             |
+| Long-context            | MRCR (1M)                          |              |         |                   | ✓          |           |        |                   |        |                     |             |
+| Coding                  | Bird-SQL (Dev)                     |              |         |                   | ✓          |           |        |                   |        |                     |             |
+| Coding                  | MBPP EvalPlus                      |              |         |                   |            | ✓         |        |                   |        |                     |             |
+| Factuality              | FACTS Grounding                    |              |         |                   | ✓          |           |        |                   |        |                     |             |
+| Factuality              | TruthfulQA                         |              |         |                   |            |           |        |                   | ✓      |                     |             |
+| Multilingual            | Global MMLU (Lite)                 |              |         |                   | ✓          |           |        |                   |        |                     |             |
+| Multilingual            | MMMLU                              |              |         | ✓                 |            |           |        |                   |        |                     |             |
+| Image                   | MMMU-Pro                           |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| Image                   | MM-MT-Bench                        |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| Image                   | ChartQA                            |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| Image                   | AI2D                               |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| Audio                   | CoVoST2 (21 lang)                  |              |         |                   | ✓          |           |        |                   |        |                     |             |
+| Video                   | EgoSchema (test)                   |              |         |                   | ✓          |           |        |                   |        |                     |             |
+| Agentic                 | TAU-Bench                          |              |         | ✓                 |            |           |        |                   |        |                     |             |
+| Tool Use                | BFCLv2                             |              |         |                   |            | ✓         |        |                   |        |                     |             |
+| Tool Use                | Nexus                              |              |         |                   |            | ✓         |        |                   |        |                     |             |
+| Long-context            | ZeroSCROLLS/QuALITY                |              |         |                   |            | ✓         |        |                   |        |                     |             |
+| Long-context            | InfiniteBench/En.MC                |              |         |                   |            | ✓         |        |                   |        |                     |             |
+| Long-context            | NIH/Multi-needle                   |              |         |                   |            | ✓         |        |                   |        |                     |             |
+| Long-context            | LongBench v2                       |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| Long-context            | RULER                              |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| Safety                  | XSTest                             |              | ✓       |                   |            |           |        |                   |        |                     |             |
+| Safety                  | Tülu 3 Safety                      |              |         |                   |            |           |        |                   | ✓      |                     |             |
+| Hallucinations          | PersonQA                           |              | ✓       |                   |            |           |        |                   |        |                     |             |
+| Jailbreaking            | StrongREJECT                       |              | ✓       |                   |            |           |        |                   |        |                     |             |
+| General, Style-control  | ArenaHard                          |              |         |                   |            |           |        |                   |        |                     | ✓           |
+| RAG                     | FRAMES                             |              |         |                   |            |           |        |                   |        |                     | ✓           |
+| Coding                  | Aider-Polygot                      |              |         |                   |            |           |        |                   |        |                     | ✓           |
+| Math                    | CMNO24                             |              |         |                   |            |           |        |                   |        |                     | ✓           |
+| Chinese                 | CLUEWSC                            |              |         |                   |            |           |        |                   |        |                     | ✓           |
+| Chinese                 | C-Eval                             |              |         |                   |            |           |        |                   |        |                     | ✓           |
+| Chinese                 | C-SimpleQA                         |              |         |                   |            |           |        |                   |        |                     | ✓           |
+| Coding, Reasoning       | IOI                                | CC-BY        |         |                   |            |           |        |                   |        |                     |             |
+| Coding                  | CodeELO                            |              |         |                   |            |           |        |                   |        |                     |             |
+| Reasoning               | SuperGPQA                          |              |         |                   |            |           |        |                   |        |                     |             |
+| Coding                  | SWE-Lancer                         |              |         |                   |            |           |        |                   |        |                     |             |
 
 ## General Notes
 
