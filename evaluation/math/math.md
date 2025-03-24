@@ -70,7 +70,7 @@ Below are configurations from [EleutherAI's Language Model Evaluation Harness](h
 
 
 <details>
-<summary>Default</summary>
+<summary>default</summary>
 
 ```yaml
 dataset_path: EleutherAI/hendrycks_math
@@ -102,6 +102,40 @@ fewshot_config:
 ```
 
 Adapted From: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/leaderboard/math/_template_yaml
+</details>
+
+<details>
+<summary>hendrycks_math_algebra</summary>
+
+```yaml
+tag:
+  - math_word_problems
+task: hendrycks_math_algebra
+dataset_path: EleutherAI/hendrycks_math
+process_docs: !function utils.process_docs
+dataset_name: algebra
+output_type: generate_until
+training_split: train
+test_split: test
+doc_to_text:  "Problem: {{problem}}\nAnswer:"
+process_results: !function utils.process_results
+doc_to_target: "{{answer}}"
+generation_kwargs:
+  until:
+    - "Problem:"
+  do_sample: false
+  temperature: 0
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
+dataset_kwargs:
+  trust_remote_code: true
+```
+
+Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/hendrycks_math/hendrycks_math_algebra.yaml
 </details>
 
 ## Citation

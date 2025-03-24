@@ -14,8 +14,8 @@
    - [Adapters](finetuning/adapters/)
 5. Alignment Stage
    - [Reducing Hallucination](alignment/hallucination/)
-6. Evaluation Stage
-   - [Overview](evaluation/README.md)
+6. Evaluation Stage ⚖️
+   - [Overview](evaluation/README.md) - An overview of the evaluation coverage (i.e. the set of benchmarks and capabilities) compared across frontier models.
    - [General](evaluation/general/) - knowledge, language ability (e.g. reading comprehesion), broad/multi-domain.
    - [Steerability](evaluation/steerability/) - instruction-following ability.
    - [Math](evaluation/math/) - solving math problems, math reasoning or math programming problems.

@@ -26,7 +26,7 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | Steerability            | [IFEval](steerability/ifeval.md)   | Apache 2.0   |         | ✓                 |            | ✓         |        |                   | ✓      | ✓                   | ✓           |
 | Factuality              | [SimpleQA](factuality/simpleqa.md) | MIT          | ✓       |                   | ✓          |           |        | ✓                 |        |                     | ✓           |
 | Image                   | [MMMU](image/mmmu.md)              | Apache 2.0   |         | ✓                 | ✓          |           | ✓      | ✓                 |        |                     |             |
-| Math                    | AIME24                             | MIT          | ✓       | ✓                 |            |           |        |                   |        |                     | ✓           |
+| Math                    | [AIME24](math/aime.md)                             | Unknown          | ✓       | ✓                 |            |           |        |                   |        |                     | ✓           |
 | Coding                  | LiveCodeBench (v5)                 |              | ✓       |                   | ✓          |           |        |                   |        |                     | ✓           |
 | Coding                  | SWE-Bench Verified                 |              | ✓       | ✓                 |            |           |        |                   |        |                     | ✓           |
 | Coding                  | [HumanEval](coding/humaneval.md)   | MIT          |         |                   |            | ✓         | ✓      | ✓                 |        |                     |             |
@@ -49,11 +49,11 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | Coding                  | MBPP EvalPlus                      |              |         |                   |            | ✓         |        |                   |        |                     |             |
 | Factuality              | FACTS Grounding                    |              |         |                   | ✓          |           |        |                   |        |                     |             |
 | Factuality              | TruthfulQA                         |              |         |                   |            |           |        |                   | ✓      |                     |             |
-| Multilingual            | Global MMLU (Lite)                 |              |         |                   | ✓          |           |        |                   |        |                     |             |
+| Multilingual            | [Global MMLU](multilingual/global_mmlu.md)                 |              |         |                   | ✓          |           |        |                   |        |                     |             |
 | Multilingual            | MMMLU                              |              |         | ✓                 |            |           |        |                   |        |                     |             |
 | Image                   | MMMU-Pro                           |              |         |                   |            |           |        | ✓                 |        |                     |             |
 | Image                   | MM-MT-Bench                        |              |         |                   |            |           |        | ✓                 |        |                     |             |
-| Image                   | ChartQA                            |              |         |                   |            |           |        | ✓                 |        |                     |             |
+| Image                   | [ChartQA](image/chartqa.md)                            | GPL-3.0              |         |                   |            |           |        | ✓                 |        |                     |             |
 | Image                   | AI2D                               |              |         |                   |            |           |        | ✓                 |        |                     |             |
 | Audio                   | CoVoST2 (21 lang)                  |              |         |                   | ✓          |           |        |                   |        |                     |             |
 | Video                   | EgoSchema (test)                   |              |         |                   | ✓          |           |        |                   |        |                     |             |
@@ -81,6 +81,10 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | Reasoning               | SuperGPQA                          |              |         |                   |            |           |        |                   |        |                     |             |
 | Coding                  | SWE-Lancer                         |              |         |                   |            |           |        |                   |        |                     |             |
 
+## Metrics
+
+- [pass@k](metrics/pass@k.md) - applied to determine functional correctness in coding benchmarks with unit tests and increasingly to reduce the variability for generative benchmarks (i.e. with pass@1) using non-zero temperatures and sampling rather than greedy decoding.
+
 ## General Notes
 
 Some general points on evaluations:
@@ -89,3 +93,4 @@ Some general points on evaluations:
 - Evaluations that expect fixed outputs like multiple-choice-questions or classification with a fixed set of classes (e.g. sentiment analysis) usually will set the max number of tokens, truncate outputs by setting stop tokens or evaluate based on the log likelihood of the output tokens of the class.
 - Some evaluations (e.g. reasoning evals) can be setup to measure zero-shot or n-shot Chain of Thought (CoT) performances.
 - LLM-as-a-Judge is another popular method of evaluation. It uses a judge LLM to verify if the output answer is correct.
+- **Saturation.** Many benchmarks are increasingly becoming saturated, meaning the performance of models on the benchmark is getting close to the maximum or that it is becoming increasingly difficult to see gains in performance on that benchmark.
