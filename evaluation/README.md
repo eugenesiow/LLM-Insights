@@ -81,6 +81,10 @@ Evaluations generally consist of some datasets with ground truth answers and som
 | Reasoning               | SuperGPQA                          |              |         |                   |            |           |        |                   |        |                     |             |
 | Coding                  | SWE-Lancer                         |              |         |                   |            |           |        |                   |        |                     |             |
 
+**Permissive Licenses**: [MIT](https://choosealicense.com/licenses/mit/), [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/), [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) ([Attribution](https://creativecommons.org/licenses/by/4.0/#ref-appropriate-credit))
+<br>
+**Copyleft Licenses**: [GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/), [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/) ([ShareAlike](https://creativecommons.org/licenses/by-sa/4.0/#src-same-license))
+
 ## Metrics
 
 - [pass@k](metrics/pass@k.md) - applied to determine functional correctness in coding benchmarks with unit tests and increasingly to reduce the variability for generative benchmarks (i.e. with pass@1) using non-zero temperatures and sampling rather than greedy decoding.
