@@ -2,7 +2,7 @@
 
 Agents or agentic systems can be defined in several ways. I'll reference Anthropic's [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) well-written (Dec 2024) blog post by Schluntz et al. here. At one end of the spectrum we have the **highly autonomous** definition, *fully autonomous systems that operate independently over extended periods, using various tools to accomplish complex tasks*, at the other we have the **prescriptive implementations** that *follow predefined workflows*. In the Anthropic definition, they draw the line between **workflows** and **agents**:
 
-- **Workflows** are systems where LLMs and tools are orchestrated through predefined code paths, workflows offer predictability and consistency for well-defined tasks, while,
+- [**Workflows**](workflows.md) are systems where LLMs and tools are orchestrated through predefined code paths, workflows offer predictability and consistency for well-defined tasks, while,
 - **Agents** are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks. Agents are the better option when flexibility and model-driven decision-making are needed at scale.
 
 I also wrote down some of my own thoughts on agents in an internal blog post in Dec 2024 (before the Anthropic post). Some "out-of-context" excerpts:
@@ -15,9 +15,9 @@ So very similiar to the Anthropic definition, agents with "agency" **dynamically
 
 > When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all. Agentic systems often trade latency and cost for better task performance, and you should consider when this tradeoff makes sense. - Erik Schluntz and Barry Zhang, Anthropic
 
-On the other hand, **workflows** could be super productive and be what we actually need.
+On the other hand, [**workflows**](workflows.md) could be super productive and be what we actually need.
 
-## Frameworks
+## Agentic Systems
 
 - [LangManus](prompts/langmanus/README.md) - AI automation framework that combines language models with specialized tools for tasks like web search, crawling, and Python code execution. Open source clone of [Manus AI](https://manus.im/).
     - [Prompts](prompts/langmanus/) - Coordinator, Planner, Supervisor, Researcher, Coder, Browser and Reporter Agents.
