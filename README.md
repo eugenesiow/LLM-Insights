@@ -32,6 +32,7 @@
    - [Throughput](inference/README.md#generative-inference-throughput)
    - [Guidance](inference/guidance/README.md)
 8. Applications 🤖
+   - [Workflows](applications/workflows/README.md)
    - [Agents](applications/agents/README.md)
 
 ## Acknowledgements
