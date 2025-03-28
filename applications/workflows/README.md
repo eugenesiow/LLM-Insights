@@ -4,6 +4,33 @@ Workflows are systems where Foundation Models (FMs) and tools are orchestrated t
 
 Note: I use Foundation Models (FMs) to represent the superset which includes LLMs, Large Multimodal Models (LMMs) like Vision Language Models (VLMs) or other models involving speech, video or other forms.
 
+1. [Prompt Chaining](#prompt-chaining)
+2. [Routing](#routing)
+3. [Parallelization](#parallelization)
+4. [Orchestrator-Workers](#orchestrator-workers)
+5. [Evaluator-Optimizer](#evaluator-optimizer)
+
+### Prompt Chaining
+
+Prompt chaining decomposes a task into a sequence of steps, where each FM call processes the output of the previous call. You can add programmatic checks (e.g. `gate` in the diagram below) on any intermediate steps to ensure that the process is still on track.
+
+**When to use this workflow**: This workflow is ideal for situations where the task can be easily and cleanly decomposed into fixed subtasks. The main goal is to trade off latency for higher accuracy, by making each FM call an easier task.
+
+```mermaid
+flowchart LR
+    A([In]) --> C[FM Call 1]
+    C --> |Output 1| B[Gate]
+    B --> |Pass| D[FM Call 2]
+    B -.->|Fail| F([Exit])
+    D --> |Output 2| E[FM Call 3]
+    E --> G([Out])
+```
+
+Examples where prompt chaining is useful:
+
+1. Generating Marketing copy, then translating it into a different language.
+2. Writing an outline of a document, checking that the outline meets certain criteria, then writing the document based on the outline.
+
 ### Routing
 
 The routing workflow first classifies an input (`In`) with an `FM Call Router` and directs it to a specialized followup task (e.g. `FM Call 1`). This workflow allows for separation of concerns, and building more specialized prompts. Without this workflow, optimizing for one kind of input can hurt performance on other inputs.
@@ -53,5 +80,47 @@ Examples where parallelization is useful:
 2. *Sectioning.* Automating evals for evaluating FM performance, where each FM call evaluates a different aspect of the model’s performance on a given prompt.
 3. *Voting.* Reviewing a piece of code for vulnerabilities, where several different prompts review and flag the code if they find a problem.
 4. *Voting.* Evaluating whether a given piece of content is inappropriate, with multiple prompts evaluating different aspects or requiring different vote thresholds to balance false positives and negatives.
+
+### Orchestrator-Workers
+
+In the orchestrator-workers workflow, a central LLM dynamically breaks down tasks, delegates them to worker FMs (FM calls), and synthesizes their results.
+
+```mermaid
+flowchart LR
+    A([In]) --> B[Orchestrator]
+    B -.-> C[FM Call 1]
+    B -.-> D[FM Call 2]
+    B -.-> E[FM Call 3]
+    C -.-> F[Synthesizer]
+    D -.-> F
+    E -.-> F
+    F --> G([Out])
+```
+
+**When to use this workflow**: This workflow is well-suited for complex tasks where you can’t predict the subtasks needed (in coding, for example, the number of files that need to be changed and the nature of the change in each file likely depend on the task). Whereas it’s topographically similar, the key difference from parallelization is its flexibility—subtasks aren't pre-defined, but determined by the orchestrator based on the specific input.
+
+Example where orchestrator-workers is useful:
+
+1. Coding products that make complex changes to multiple files each time.
+2. Search tasks that involve gathering and analyzing information from multiple sources for possible relevant information.
+
+### Evaluator-Optimizer
+
+In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.
+
+```mermaid
+flowchart LR
+    A([In]) --> B[FM Call Generator]
+    B --> |Solution| C[FM Call Evaluator]
+    C --> |Rejected + Feedback| B
+    C --> |Accepted| G([Out])
+```
+
+**When to use this workflow**: This workflow is particularly effective when we have clear evaluation criteria, and when iterative refinement provides measurable value. The two signs of good fit are, first, that FM responses can be demonstrably improved when a human articulates their feedback; and second, that the FM can provide such feedback. This is analogous to the iterative writing process a human writer might go through when producing a polished document.
+
+Examples where evaluator-optimizer is useful:
+
+1. Literary translation where there are nuances that the translator FM might not capture initially, but where an evaluator FM can provide useful critiques.
+2. Complex search tasks that require multiple rounds of searching and analysis to gather comprehensive information, where the evaluator decides whether further searches are warranted.
 
 The above workflows heavily reference Anthropic's [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) blog post by Schluntz et al. (Dec 2024).

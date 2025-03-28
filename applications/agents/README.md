@@ -22,7 +22,11 @@ On the other hand, [**workflows**](../workflows/README.md) could be super produc
 - [LangManus](prompts/langmanus/README.md) - AI automation framework that combines language models with specialized tools for tasks like web search, crawling, and Python code execution. Open source clone of [Manus AI](https://manus.im/).
     - [Prompts](prompts/langmanus/) - Coordinator, Planner, Supervisor, Researcher, Coder, Browser and Reporter Agents.
 
-## User Interfaces
+## Middleware
+
+- [Model Context Protocol (MCP)](middleware/mcp.md) - A middleware layer, a kind of standardized integration layer, for agents. It provides agents with (standardized, secure and structured) plumbing to connect and perform actions involving external data or tools.
+
+## Graphical User Interfaces
 
 - [Rivet](https://github.com/Ironclad/rivet) - a graphical user interface and development environment for creating complex AI agents and prompt chaining, and embedding it in your application.
 
