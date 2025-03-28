@@ -1,9 +1,18 @@
 # Agents
 
+- [Introduction](#introduction) - [Workflows](../workflows/README.md) VS [Agents](#agents-1)
+- [Agents](#agents-1)
+- [Levels of Agency](#levels-of-agency)
+- [Agentic Systems](#agentic-systems)
+- [Middleware](#middleware)
+- [Graphical User Interfaces](#graphical-user-interfaces)
+
+## Introduction
+
 Agents or agentic systems can be defined in several ways. I'll reference Anthropic's [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) well-written (Dec 2024) blog post by Schluntz et al. here. At one end of the spectrum we have the **highly autonomous** definition, *fully autonomous systems that operate independently over extended periods, using various tools to accomplish complex tasks*, at the other we have the **prescriptive implementations** that *follow predefined workflows*. In the Anthropic definition, they draw the line between **workflows** and **agents**:
 
 - [**Workflows**](../workflows/README.md) are systems where FMs and tools are orchestrated through predefined code paths, workflows offer predictability and consistency for well-defined tasks, while,
-- **Agents** are systems where FMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks. Agents are the better option when flexibility and model-driven decision-making are needed at scale.
+- [**Agents**](#agents-1) are systems where FMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks. Agents are the better option when flexibility and model-driven decision-making are needed at scale.
 
 I also wrote down some of my own thoughts on agents in an internal blog post in Dec 2024 (before the Anthropic post). Some "out-of-context" excerpts:
 
@@ -17,7 +26,74 @@ So very similiar to the Anthropic definition, agents with "agency" **dynamically
 
 On the other hand, [**workflows**](../workflows/README.md) could be super productive and be what we actually need.
 
+## Agents
+
+Agents can handle sophisticated tasks, but their implementation is often straightforward. They are typically just FMs using tools to perform actions based on environmental feedback in a loop. Such an agent loop can be visualized in a graph as shown below.
+
+```mermaid
+flowchart LR
+    A([Human]) <-.-> C[FM Call]
+    C --> |Action| F([Environment])
+    F --> |Feedback| C
+    C -.-> D[Stop]
+```
+
+Or if you prefer it implemented in pythonic pseudo-code, here you go.
+
+```python
+env = Environment()
+tools = Tools(env)
+system_prompt = "Goals, constraints, and how to act"
+
+while True:
+    action = fm.call(system_prompt + env.feedback)
+    env.feedback = tools.run(action)
+```
+
+A useful extension to our above agent loop is being able to augment our FM (or FM call) with memory. FM context windows (a limitation on the maximum amount of data an FM can input) means that agents that require a lot of information to be processed can quickly exceed the the size of the context window. Memory systems (both short-term and long-term) help an agent to manage its context effectively. This augmentation is visualized in the diagram below.
+
+```mermaid
+flowchart LR
+    A([Human]) <-.-> C[FM Call]
+    C --> |Action| F([Environment])
+    F --> |Feedback| C
+    C -.-> D[Stop]
+    C <-.-> |Read/Write| E[(Memory)]
+```
+
+We could augment our python pseudo-code accordingly:
+
+```python
+memory = Memory
+env = Environment()
+tools = Tools(env)
+system_prompt = "Goals, constraints, and how to act"
+
+while True:
+    action = fm.call(system_prompt + env.feedback + memory.retrieve(env.feedback))
+    env.feedback = tools.run(action)
+    memory += [action, env.feedback]
+```
+
+## Levels of Agency
+
+We borrow the classification by Hugging Face's smolagents team for [levels of agency](https://huggingface.co/blog/smolagents), which they define as the influence of the FM's input on the agentic loop (code workflow) is the level of agency of the FM in the system.
+
+The table below illustrates how agency varies across systems:
+
+| Agency Level | Description | How that's called | Example Pattern |
+| --- | --- | --- | --- |
+| ☆☆☆ | LLM output has no impact on program flow | Simple processor | `process_llm_output(llm_response)` |
+| ★☆☆ | LLM output determines basic control flow | Router | `if llm_decision(): path_a() else: path_b()` |
+| ★★☆ | LLM output determines function execution | Tool call | `run_function(llm_chosen_tool, llm_chosen_args)` |
+| ★★★ | LLM output controls iteration and program continuation | Multi-step Agent | `while llm_should_continue(): execute_next_step()` |
+| ★★★ | One agentic workflow can start another agentic workflow | Multi-Agent | `if llm_trigger(): execute_agent()` |
+
+So following on our previous definition, we probably can draw the line at ★☆☆ and ★★☆ being [workflows](../workflows/README.md) and ★★★ having the level of agency of an agentic system.
+
 ## Agentic Systems
+
+Agentic systems often comprise multiple AI agents that work in concert, leveraging the capabilities of Foundation Models (FMs) to tackle complex problems.
 
 - [LangManus](prompts/langmanus/README.md) - AI automation framework that combines language models with specialized tools for tasks like web search, crawling, and Python code execution. Open source clone of [Manus AI](https://manus.im/).
     - [Prompts](prompts/langmanus/) - Coordinator, Planner, Supervisor, Researcher, Coder, Browser and Reporter Agents.
