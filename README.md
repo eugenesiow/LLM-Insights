@@ -1,5 +1,7 @@
 # LLM Insights
 
+A collection of insights gleaned from work on each stage of Large Language Model (LLM) and Foundation Model (FM) development.
+
 1. Infrastructure/Platform 🏗️
    - [Hardware](infrastructure/hardware/)
    - [Alternative Accelerators](infrastructure/hardware/alternatives/)
@@ -26,7 +28,7 @@
    - [Image](evaluation/image/) - multimodal image understanding, knowledge, advanced perception and multimodal reasoning ability.
    - [Audio](evaluation/audio/) - multimodal audio understanding, end-to-end speech-to-text translation, etc.
    - [Video](evaluation/video/) - multimodal video language understanding, long-form video understanding, etc.
-   - [Long-Context](long-context/) - answering questions on long documents (e.g. 32K, 64K, 128K, 1M), where the knowledge required from the document could be anywhere in the document.
+   - [Long-Context](evaluation/long-context/) - answering questions on long documents (e.g. 32K, 64K, 128K, 1M), where the knowledge required from the document could be anywhere in the document.
 7. Inference Stage 🚀
    - [Estimating Model Size](inference/README.md##estimating-model-size)
    - [Speed](inference/README.md#generative-inference-speed)
