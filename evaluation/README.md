@@ -14,6 +14,7 @@ Evaluations generally consist of some datasets with ground truth answers and som
 8. [Image](image/) - multimodal image understanding, knowledge, advanced perception and multimodal reasoning ability.
 9. [Audio](audio/) - multimodal audio understanding, end-to-end speech-to-text translation, etc.
 10. [Video](video/) - multimodal video language understanding, long-form video understanding, etc.
+11. [Long-Context](long-context/) - answering questions on long documents (e.g. 32K, 64K, 128K, 1M), where the knowledge required from the document could be anywhere in the document.
 
 ## Evaluation Coverage
 
@@ -37,7 +38,7 @@ The following is a curated benchmark list covering a range of model capabilities
 | Steerability            | [AlpacaEval](steerability/alpacaeval.md)    | CC-BY-NC-4.0 ⚠️ |         |                   |            |            |           |        |                   | ✓      |                     | ✓           |
 | Math                    | [GSM8K](math/gsm8k.md)                      | MIT             |         |                   |            |            | ✓         |        |                   | ✓      |                     |             |
 | Coding                  | Codeforces                                  |                 | ✓       |                   |            |            |           |        |                   |        |                     | ✓           |
-| Long-context            | MRCR                                        |                 |         |                   | ✓          | ✓          |           |        |                   |        |                     |             |
+| Long-context            | [MRCR](long-context/mrcr.md)                                        | Unknown ⚠️                |         |                   | ✓          | ✓          |           |        |                   |        |                     |             |
 | Multilingual            | [Global MMLU](multilingual/global_mmlu.md)  | Apache 2.0      |         |                   | ✓          | ✓          |           |        |                   |        |                     |             |
 | Multilingual            | [MGSM](multilingual/mgsm.md)                | CC-BY-SA-4.0 ⚠️ | ✓       |                   |            |            | ✓         |        |                   |        |                     |             |
 | Image                   | MathVista                                   |                 |         |                   |            |            |           | ✓      | ✓                 |        |                     |             |
