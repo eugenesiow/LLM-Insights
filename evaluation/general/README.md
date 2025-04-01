@@ -6,3 +6,4 @@ Evaluations on knowledge, language ability (e.g. reading comprehesion), broad/mu
 - [MMLU (Massive Multitask Language Understanding)](mmlu.md)
 - [MMLU-Pro (Massive Multitask Language Understanding - Professional)](mmlu.md)
 - [TriviaQA (Trivia Question Answering)](triviaqa.md)
+- [PopQA](popqa.md)
