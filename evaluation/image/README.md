@@ -4,6 +4,8 @@ Evaluations on multimodal image understanding, knowledge, advanced perception an
 
 - [MMMU (Massive Multi-discipline Multimodal Understanding)](mmmu.md)
 - [ChartQA (Chart Question Answering)](chartqa.md)
+- [MathVista](mathvista.md)
+- [DocVQA (Document Visual Question Answering)](docvqa.md)
 
 ## Interdisciplinary Capabilities
 
