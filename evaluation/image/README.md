@@ -6,6 +6,7 @@ Evaluations on multimodal image understanding, knowledge, advanced perception an
 - [ChartQA (Chart Question Answering)](chartqa.md)
 - [MathVista](mathvista.md)
 - [DocVQA (Document Visual Question Answering)](docvqa.md)
+- [AI2D (Allen Institute for Artificial Intelligence Diagrams)](ai2d.md)
 
 ## Interdisciplinary Capabilities
 

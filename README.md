@@ -29,6 +29,7 @@ A collection of insights gleaned from work on each stage of Large Language Model
    - [Audio](evaluation/audio/) - multimodal audio understanding, end-to-end speech-to-text translation, etc.
    - [Video](evaluation/video/) - multimodal video language understanding, long-form video understanding, etc.
    - [Long-Context](evaluation/long-context/) - answering questions on long documents (e.g. 32K, 64K, 128K, 1M), where the knowledge required from the document could be anywhere in the document.
+   - [Agentic and Tool Use](evaluation/agentic/) - ability to interact with external tools and environments, perform actions based on goals, and exhibit autonomous behavior.
 7. Inference Stage 🚀
    - [Estimating Model Size](inference/README.md##estimating-model-size)
    - [Speed](inference/README.md#generative-inference-speed)
