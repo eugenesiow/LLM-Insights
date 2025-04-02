@@ -300,7 +300,7 @@ Source: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/ta
 
 ## Citation
 
-```
+```bibtex
 @misc{rein2023gpqa,
       title={GPQA: A Graduate-Level Google-Proof Q&A Benchmark},
       author={David Rein and Betty Li Hou and Asa Cooper Stickland and Jackson Petty and Richard Yuanzhe Pang and Julien Dirani and Julian Michael and Samuel R. Bowman},

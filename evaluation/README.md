@@ -49,7 +49,7 @@ The following is a curated benchmark list covering a range of model capabilities
 | Math                    | [HiddenMath](math/hiddenmath.md)                                  | Unknown ⚠️      |         |                   |            | ✓          |           |        |                   |        |                     |             |
 | Math                    | [FrontierMath](math/frontiermath.md)                                | Unknown ⚠️                | ✓       |                   |            |            |           |        |                   |        |                     |             |
 | Reasoning               | [ARC Challenge](reasoning/arc.md)           | CC-BY-SA-4.0 ⚠️ |         |                   |            |            | ✓         |        |                   |        |                     |             |
-| Reasoning, Long-context | MUSR                                        |                 |         |                   |            |            |           |        |                   |        | ✓                   |             |
+| Reasoning | [MUSR](reasoning/musr.md)                                        | CC-BY-4.0                |         |                   |            |            |           |        |                   |        | ✓                   |             |
 | Coding                  | Bird-SQL (Dev)                              |                 |         |                   |            | ✓          |           |        |                   |        |                     |             |
 | Coding                  | [MBPP EvalPlus](coding/mbpp.md)             | Apache 2.0      |         |                   |            |            | ✓         |        |                   |        |                     |             |
 | Factuality              | FACTS Grounding                             |                 |         |                   |            | ✓          |           |        |                   |        |                     |             |
@@ -94,6 +94,10 @@ The following is a curated benchmark list covering a range of model capabilities
 ## Metrics
 
 - [pass@k](metrics/pass@k.md) - applied to determine functional correctness in coding benchmarks with unit tests and increasingly to reduce the variability for generative benchmarks (i.e. with pass@1) using non-zero temperatures and sampling rather than greedy decoding.
+
+## Inference Techniques
+
+- [n-shot Prompting](../inference/techniques/nshot.md) - the method of conditioning a language model with *n* example pairs that demonstrate the desired task, guiding the model to produce outputs consistent with the provided examples. Increasing the number of examples can help clarify task expectations and often leads to better performance. 0-shot prompting is a special case where only instructions are provided, without any examples.
 
 ## General Notes
 
