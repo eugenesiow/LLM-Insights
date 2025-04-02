@@ -6,6 +6,9 @@
     - [Tools](#tools)
   - [Generative Inference Speed](#generative-inference-speed)
   - [Generative Inference Throughput](#generative-inference-throughput)
+  - Techniques
+    - [n-shot Prompting](techniques/nshot.md) - the method of conditioning a language model with *n* example pairs that demonstrate the desired task, guiding the model to produce outputs consistent with the provided examples. Increasing the number of examples can help clarify task expectations and often leads to better performance. 0-shot prompting is a special case where only instructions are provided, without any examples.
+    - [Chain-of-Thought Prompting](techniques/cot.md) - encourages language models to generate intermediate reasoning steps before arriving at a final answer. This technique helps models break down complex problems into manageable sub-steps, improving performance on tasks that require multi-step reasoning.
 
 ## Estimating Model Size
 
