@@ -24,12 +24,31 @@ MMMU includes 11.5K meticulously collected multimodal questions from college exa
 | Average option length             | 9.17           |
 | Average explanation length        | 107.92         |
 
+### MMMU-Pro
+
+MMMU-Pro is an enhanced multimodal benchmark published in the paper [MMMU-Pro: A More Robust Multi-discipline Multimodal Understanding Benchmark](https://arxiv.org/abs/2409.02813) by Yue et al. in Sep 2024 and designed to rigorously assess the true understanding capabilities of advanced AI models across multiple modalities. It builds upon the original MMMU benchmark by introducing several key improvements that make it more challenging and realistic, ensuring that models are evaluated on their genuine ability to integrate and comprehend both visual and textual information. 
+
+- Increased Complexity: MMMU-Pro introduces a vision-only input setting and increases the number of candidate options from 4 to 10, making it significantly harder for models to rely on guessing or exploiting shortcuts.
+    - Filtering Questions: Initially, questions answerable by text-only models were filtered out. Four strong open-source LLMs were tasked with answering the MMMU questions without images. Questions consistently answered correctly were excluded, resulting in a refined dataset.
+    - Augmenting Candidate Options: To reduce the reliance on option-based guessing, the number of candidate answers was increased from four to ten, making the task significantly more complex.
+- Real-World Simulation: The vision-only questions are derived from screenshots or photos captured within a simulated display environment. These variations include different backgrounds, font styles, and sizes, closely mimicking real-world conditions where users might provide integrated visual-textual content.
+    - Enhancing Evaluation with Vision-Only Input Setting: To further challenge models, a vision-only input setting was introduced. Questions are embedded in screenshots or photos, demanding integration of visual and textual information without separate text input.
+
 ## Links
+
+### MMMU
 
 * Abstract: https://arxiv.org/abs/2311.16502
 * Homepage: https://github.com/MMMU-Benchmark/MMMU
 * Dataset: https://huggingface.co/datasets/MMMU/MMMU
 * License: [Apache 2.0](https://huggingface.co/datasets/MMMU/MMMU/blob/main/README.md)
+
+### MMMU-Pro
+
+* Abstract: https://arxiv.org/abs/2409.02813
+* Homepage: https://github.com/MMMU-Benchmark/MMMU
+* Dataset: https://huggingface.co/datasets/MMMU/MMMU_Pro
+* License: [Apache 2.0](https://huggingface.co/datasets/MMMU/MMMU_Pro/blob/main/README.md)
 
 ## Subjects
 
@@ -223,7 +242,7 @@ Source: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/ta
 
 ## Citation
 
-```
+```bibtex
 @misc{yue2024mmmumassivemultidisciplinemultimodal,
       title={MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI}, 
       author={Xiang Yue and Yuansheng Ni and Kai Zhang and Tianyu Zheng and Ruoqi Liu and Ge Zhang and Samuel Stevens and Dongfu Jiang and Weiming Ren and Yuxuan Sun and Cong Wei and Botao Yu and Ruibin Yuan and Renliang Sun and Ming Yin and Boyuan Zheng and Zhenzhu Yang and Yibo Liu and Wenhao Huang and Huan Sun and Yu Su and Wenhu Chen},
@@ -232,5 +251,17 @@ Source: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/ta
       archivePrefix={arXiv},
       primaryClass={cs.CL},
       url={https://arxiv.org/abs/2311.16502}, 
+}
+```
+
+```bibtex
+@misc{yue2024mmmuprorobustmultidisciplinemultimodal,
+      title={MMMU-Pro: A More Robust Multi-discipline Multimodal Understanding Benchmark}, 
+      author={Xiang Yue and Tianyu Zheng and Yuansheng Ni and Yubo Wang and Kai Zhang and Shengbang Tong and Yuxuan Sun and Botao Yu and Ge Zhang and Huan Sun and Yu Su and Wenhu Chen and Graham Neubig},
+      year={2024},
+      eprint={2409.02813},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2409.02813}, 
 }
 ```
