@@ -18,6 +18,7 @@ A collection of insights gleaned from work on each stage of Large Language Model
    - [Reducing Hallucination](alignment/hallucination/)
 6. Evaluation Stage ⚖️
    - [Overview](evaluation/README.md) - An overview of the evaluation coverage (i.e. the set of benchmarks and capabilities) compared across frontier models.
+      - [Metrics](evaluation/metrics) - means and methods to quantify evaluation performance (e.g. pass@k).
    - [General](evaluation/general/) - knowledge, language ability (e.g. reading comprehesion), broad/multi-domain.
    - [Steerability](evaluation/steerability/) - instruction-following ability.
    - [Math](evaluation/math/) - solving math problems, math reasoning or math programming problems.

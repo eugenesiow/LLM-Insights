@@ -1,6 +1,6 @@
 # Evaluation
 
-Evaluations generally consist of some datasets with ground truth answers and some code to run them (e.g. an evaluation harness).
+Evaluations generally consist of some datasets with ground truth answers (or some way of getting there) and some code to run them (e.g. an evaluation harness). What's challenging about generative AI (GenAI) benchmarks on foundation models (FMs) is their **open-endedness**, that is, such models and systems built from them are underspecified and deliberately versatile in the range of use cases they support, and **non-deterministic** in their outputs (sampling introduces some randonmess), which complicates the prediction of system behaviors and the tracing of design choices to outputs. Hence, this section focuses on classes of capabilities that the frontier foundation models are evaluating on (and their coverage).
 
 ## Evaluating Capabilities
 
