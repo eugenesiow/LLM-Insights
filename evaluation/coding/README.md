@@ -7,3 +7,4 @@ Evaluations that assess a models ability to write programming code, do software 
 - [LiveCodeBench](livecodebench.md)
 - [SWE-Bench](swe_bench.md)
 - [Aider-Polygot](aider_polygot.md)
+- [Bird-SQL](birdsql.md)
