@@ -94,6 +94,8 @@ The following is a curated benchmark list covering a range of model capabilities
 
 ## Metrics
 
+- [ChrF (Character n-gram F-score) and ChrF++](metrics/chrf.md) - metrics for automatic evaluation of machine translation output. They measure the F-score for character n-gram matches. ChrF++ additionally adds word n-grams (unigrams and bigrams).
+- Exact Match (EM) - a metric that measures how much of the model's responses perfectly match the correct answers.
 - [pass@k](metrics/pass@k.md) - applied to determine functional correctness in coding benchmarks with unit tests and increasingly to reduce the variability for generative benchmarks (i.e. with pass@1) using non-zero temperatures and sampling rather than greedy decoding.
 - [pass^k](metrics/pass^k.md) - a metric to evaluate the reliability of agent behavior over multiple trials.
 
