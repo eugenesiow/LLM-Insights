@@ -7,6 +7,13 @@
 - **Layers:** This stands for the number of layers in the model. It signifies the depth of the neural network, i.e., how many successive layers of processing the data goes through.
 - **Heads:** This refers to the number of heads in a multi-head attention mechanism, which is commonly used in transformer models. Multi-head attention allows the model to focus on different parts of the input simultaneously.
 
+The following is a standard transformer block (from the dense Llama 1/2/3 architecture).
+
+![Transformer block based on the Llama architecture](./figures/llama_transformer_block_dark.svg#gh-dark-mode-only)
+![Transformer block based on the Llama architecture](./figures/llama_transformer_block.svg#gh-light-mode-only)
+
+
+
 | Model            | Params | Shared | Total Routed | Activated Routed | Fine-grain  | Affiliation    | Release   |
 |------------------|--------|--------|--------------|------------------|-------------|----------------|-----------|
 | [DeepSeek-V3](../architecture/DeepseekV3.md)      | 671B   | 1      | 256          | 8                | Y           | DeepSeek-AI    | 2024.12   |
@@ -29,3 +36,8 @@
 | DeepSeekMoE      | 16.4B  | 2      | 64           | 6                | Y           | DeepSeek-AI    | 2024.01   |
 | Mixtral-8x7B     | 46.7B  | 0      | 8            | 2                | N           | Mistral AI     | 2023.12   |
 | OpenMoE          | 34B    | 0      | 16           | 2                | N           | NUS et al.     | 2023.12   |
+
+## References
+
+- DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models. - https://arxiv.org/abs/2401.06066
+
