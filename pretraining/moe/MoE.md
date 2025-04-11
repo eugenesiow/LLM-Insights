@@ -7,12 +7,12 @@
 - **Layers:** This stands for the number of layers in the model. It signifies the depth of the neural network, i.e., how many successive layers of processing the data goes through.
 - **Heads:** This refers to the number of heads in a multi-head attention mechanism, which is commonly used in transformer models. Multi-head attention allows the model to focus on different parts of the input simultaneously.
 
-The following is a standard transformer block (from the dense Llama 1/2/3 architecture).
+The following is a standard transformer block (generalised version of the dense [Llama 1/2/3 architecture](../architecture/)).
 
 ![Transformer block based on the Llama architecture](./figures/llama_transformer_block_dark.svg#gh-dark-mode-only)
 ![Transformer block based on the Llama architecture](./figures/llama_transformer_block.svg#gh-light-mode-only)
 
-
+The feed forward network (FFN) on the transformer block is replaced by an Mixture of Experts (MoE) block.
 
 | Model            | Params | Shared | Total Routed | Activated Routed | Fine-grain  | Affiliation    | Release   |
 |------------------|--------|--------|--------------|------------------|-------------|----------------|-----------|
