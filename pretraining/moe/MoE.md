@@ -12,7 +12,10 @@ The following is a standard transformer block (generalised version of the dense 
 ![Transformer block based on the Llama architecture](./figures/llama_transformer_block_dark.svg#gh-dark-mode-only)
 ![Transformer block based on the Llama architecture](./figures/llama_transformer_block.svg#gh-light-mode-only)
 
-The feed forward network (FFN) on the transformer block is replaced by an Mixture of Experts (MoE) block.
+The feed forward network (FFN) on the transformer block is replaced by an Mixture of Experts (MoE) block. This architecture includes both a shared expert and routed experts (like DeepseekMoE and Meta Llama-4).
+
+![Transformer block based on the Llama architecture](./figures/llama_transformer_block_dark.svg#gh-dark-mode-only)
+![Transformer block based on the Llama architecture](./figures/llama_transformer_block.svg#gh-light-mode-only)
 
 | Model            | Params | Shared | Total Routed | Activated Routed | Fine-grain  | Affiliation    | Release   |
 |------------------|--------|--------|--------------|------------------|-------------|----------------|-----------|
