@@ -6,3 +6,4 @@ For more information on workflows and agents, see the [agentic section](../../ap
 
 - [BFCL (Berkeley Function-Calling Leaderboard)](bfcl.md)
 - [TAU-Bench (τ -bench)](taubench.md)
+- [Nexus (Nexus Function Calling Benchmark)](nexus.md)
