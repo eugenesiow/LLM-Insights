@@ -6,7 +6,7 @@ The Model Context Protocol (MCP) is what I'd describe as a middleware layer, a s
 
 Let's dive in with a practical example (we borrow heavily from the [dolphin-mcp](https://github.com/cognitivecomputations/dolphin-mcp/) implementation) on how a client communicates with an MCP server, keeping all communication local (same machine) for now. 
 
-First, we start with a configuration file, `mcp_config.json`, that specifies a set of MCP servers. This configuration file specifies that we will start an sqlite MCP server called `mcp-server-sqlite` with a sqlite db called `./demo.db`.  We will use `uvx` (requires python and `uv` to be installed) to install all the dependencies and start the server at runtime.
+First, we start with a configuration file, `mcp_config.json`, that specifies a set of MCP servers. This configuration file specifies that we will start an sqlite MCP server called `mcp-server-sqlite` with a sqlite db called `./demo.db`.  We will use `uvx` (requires python and [`uv`](https://github.com/astral-sh/uv) to be installed) to install all the dependencies and start the server at runtime.
 
 ```json
 {

@@ -39,6 +39,7 @@ A collection of insights gleaned from work on each stage of Large Language Model
 8. Applications 🤖
    - [Workflows](applications/workflows/README.md)
    - [Agents](applications/agents/README.md)
+      - [Model Context Protocol (MCP)](applications/agents/middleware/mcp.md)
 
 ## Acknowledgements
 
