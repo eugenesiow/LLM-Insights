@@ -11,6 +11,9 @@
 3. Samples with severe issues (problematic descriptions or invalid unit tests) were removed. A conservative ensembling approach was used—if any of the three annotators flagged an issue, the sample was discarded.
 4. A final set of 500 high-quality samples was selected for SWE-bench Verified.
 
+![SWE-Bench Verified Results on Frontier Models](https://raw.githubusercontent.com/eugenesiow/llm-benchmark-graphs/refs/heads/master/graphs/swe-bench-verified/swe-bench-verified-dark.png#gh-dark-mode-only)
+![SWE-Bench Verified Results on Frontier Models](https://raw.githubusercontent.com/eugenesiow/llm-benchmark-graphs/refs/heads/master/graphs/swe-bench-verified/swe-bench-verified-light.png#gh-light-mode-only)
+
 **SWE-bench Lite** is a canonical subset (from the paper's authors) of SWE-bench called SWE-bench Lite that comprises 300 instances from SWE-bench that have been sampled to be more self-contained, with a focus on evaluating functional bug fixes. The benchmark can be run much faster than the original. SWE-bench Lite covers 11 of the original 12 repositories in SWE-bench, with a similar diversity and distribution of repositories as the original. 
 
 The general criteria used to select SWE-bench Lite instances is as follows:

@@ -4,6 +4,9 @@ GPQA stands for [Graduate-Level Google-Proof Q&A Benchmark](https://arxiv.org/ab
 
 - **Google-proof argument.** The authors argue the questions are Google-proof as "the ground truth is not available to non-experts using easily-found internet resources". Concretely, they argue that highly skilled non-expert validators only reach 34% accuracy, despite spending on average over 30 minutes with unrestricted access to the web.
 
+![GPQA Diamond Results on Frontier Models](https://raw.githubusercontent.com/eugenesiow/llm-benchmark-graphs/refs/heads/master/graphs/gpqa-diamond/gpqa-diamond-dark.png#gh-dark-mode-only)
+![GPQA Diamond Results on Frontier Models](https://raw.githubusercontent.com/eugenesiow/llm-benchmark-graphs/refs/heads/master/graphs/gpqa-diamond/gpqa-diamond-light.png#gh-light-mode-only)
+
 ## Links
 
 * Abstract: https://arxiv.org/abs/2311.12022
