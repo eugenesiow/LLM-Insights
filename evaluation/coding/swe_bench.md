@@ -56,9 +56,9 @@ The general criteria used to select SWE-bench Lite instances is as follows:
 * Dataset: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Multimodal
 * License: [MIT](https://github.com/swe-bench/SWE-bench?tab=MIT-1-ov-file#readme)
 
-## Citation
+## Citations
 
-```
+```bibtex
 @inproceedings{
     jimenez2024swebench,
     title={{SWE}-bench: Can Language Models Resolve Real-world Github Issues?},
@@ -69,7 +69,7 @@ The general criteria used to select SWE-bench Lite instances is as follows:
 }
 ```
 
-```
+```bibtex
 @inproceedings{
     yang2024swebenchmultimodal,
     title={{SWE}-bench Multimodal: Do AI Systems Generalize to Visual Software Domains?},

@@ -475,3 +475,13 @@ async def call_tool(self, tool_name: str, arguments: dict):
     logger.error(f"Server {self.server_name}: Tool {tool_name} timed out after {timeout}s")
     return {"error": f"Timeout waiting for tool result after {timeout}s"}
 ```
+
+## Ecosystem
+
+- [FastAPI-MCP](https://github.com/tadata-org/fastapi_mcp) - automatically expose FastAPI endpoints as Model Context Protocol (MCP) servers with this library.
+- [mcp-proxy](https://github.com/sparfenyuk/mcp-proxy) - connect to MCP servers that run on SSE transport, or expose stdio servers as an SSE server.
+- [mcp-use](https://github.com/mcp-use/mcp-use) - quickstart library for glueing together an MCP capable agent.
+
+### Catalogues
+
+- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) - (big) catalogue of MCP servers.
