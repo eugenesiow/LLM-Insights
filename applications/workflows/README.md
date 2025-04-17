@@ -54,6 +54,72 @@ Examples where routing is useful:
 2. Directing different types of customer service queries (general questions, refund requests, technical support) into different downstream processes, prompts, and tools.
 3. Routing easy/common questions to smaller models (less capable FMs) and hard/unusual questions to more capable models (Frontier models) to optimize cost and speed.
 
+In OpenAI's ["A practical guide to building agents" (Apr 2025)](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf), they introduce a **decentralised pattern** and give the following example of a customer service workflow:
+
+```mermaid
+flowchart LR
+    A([Where is my order?]) --> B[Triage]
+    B --> C[Orders]
+    B -.-> D[Issues and Repairs]
+    B -.-> E[Sales]
+    C --> F([On its way!])
+    D -.-> F
+    E -.-> F
+```
+
+This decentralized pattern is similar to the routing pattern we talked about, except in OpenAI's definition, each component, the `Triage`, `Orders` etc. are "agents" that can "handoff" workflow execution to one another. Handoffs are a one way transfer that allow an agent to delegate to another agent. For example, a handoff is done by tool use or function calling. If an agent (e.g. `Triage`) calls a handoff function, execution and the latest conversation state is transferred to that agent (e.g. `Orders`). 
+
+This pattern involves using many agents on equal footing, where one agent can directly hand off control of the workflow to another agent. This is optimal when you don't need a single agent
+maintaining central control or synthesis—instead allowing each agent to take over execution and interact with the user as needed. The difference from the routing pattern scope as an AI workflow is that each of the agents in the decentralised pattern can interact with the user and might represent a set of FM calls instead of a single one - its a broader definition of the routing pattern.
+
+<details>
+<summary>Code for Decentralised Pattern with OpenAI's Agents SDK</summary>
+
+```python
+from agents import Agent, Runner
+
+technical_support_agent = Agent(
+    name="Technical Support Agent",
+    instructions=(
+        "You provide expert assistance with resolving technical issues, "
+        "system outages, or product troubleshooting."
+    ),
+    tools=[search_knowledge_base]
+)
+
+sales_assistant_agent = Agent(
+    name="Sales Assistant Agent",
+    instructions=(
+        "You help enterprise clients browse the product catalog, recommend "
+        "suitable solutions, and facilitate purchase transactions."
+    ),
+    tools=[initiate_purchase_order]
+)
+
+order_management_agent = Agent(
+    name="Order Management Agent",
+    instructions=(
+        "You assist clients with inquiries regarding order tracking, "
+        "delivery schedules, and processing returns or refunds."
+    ),
+    tools=[track_order_status, initiate_refund_process]
+)
+
+triage_agent = Agent(
+    name="Triage Agent",
+    instructions="You act as the first point of contact, assessing customer queries and directing them promptly to the correct specialized agent.",
+    handoffs=[technical_support_agent, sales_assistant_agent, order_management_agent]
+)
+
+Runner.run(
+    triage_agent,
+    input("Could you please provide an update on the delivery timeline for our recent purchase?")
+)
+```
+
+</details>
+
+
 ### Parallelization
 
 The parallelization workflow puts FMs to work simultaneously on a task and have their outputs aggregated programmatically. There are 2 key variations:
