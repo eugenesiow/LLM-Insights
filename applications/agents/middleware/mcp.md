@@ -476,6 +476,149 @@ async def call_tool(self, tool_name: str, arguments: dict):
     return {"error": f"Timeout waiting for tool result after {timeout}s"}
 ```
 
+### Client-to-LLM
+
+For this example, we will get queries from the user, pass them to the LLM, process any tool calls, pass the outputs to the LLM and return the generations to the user.
+
+Before we start the client-to-user loop, we first want to use `list_tools()` to setup a system prompt to pass to the LLM.
+
+For example, the following system prompt, `SYSTEM_PROMPT` works well with `Llama-3.3-70B-Instruct` and `Qwen2.5-72B-Instruct-AWQ` and with vLLM and its tool-calling API (coherent with the chat completion API from OpenAI).
+
+```markdown
+You are a helpful assistant capable of accessing external functions and engaging in casual chat. Use the responses from these function calls to provide accurate and informative answers. The answers should be natural and hide the fact that you are using tools to access real-time information. Guide the user about available tools and their capabilities. Always utilize tools to access real-time information when required. Engage in a friendly manner to enhance the chat experience.
+
+# Tools
+
+{tools}
+
+# Notes 
+
+- Ensure responses are based on the latest information available from function calls.
+- Maintain an engaging, supportive, and friendly tone throughout the dialogue.
+- Always highlight the potential of available tools to assist users comprehensively.
+```
+
+For the `mcp-server-sqlite` server, the following tools are returned by `list_tools()` and populate the `{tools}` section of the system message.
+
+```markdown
+- read_query: Execute a SELECT query on the SQLite database
+- write_query: Execute an INSERT, UPDATE, or DELETE query on the SQLite database
+- create_table: Create a new table in the SQLite database
+- describe_table: Get the schema information for a specific table
+- append_insight: Add a business insight to the memo
+```
+
+The following schema is also passed in to the tools specification part of the chat completions API.
+
+```json
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "read_query",
+            "description": "Execute a SELECT query on the SQLite database",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "SELECT SQL query to execute"
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        }
+    },
+    ...
+]
+```
+
+So the above list is created and sent in the `tools` key within the `create()` function as shown below.
+
+```python
+first_response = await client.chat.completions.create(
+    model=MODEL_ID,
+    messages=messages,
+    tools=([t["schema"] for t in tools.values()] if len(tools) > 0 else None),
+    max_tokens=4096,
+    temperature=0,
+)
+```
+
+The messages passed in are the system prompt we defined earlier and the query we get from the user:
+
+```python
+messages.append({
+    "role": "system",
+    "content": SYSTEM_PROMPT.format(
+        tools="\n- ".join(
+            [
+                f"{t['name']}: {t['schema']['function']['description']}"
+                for t in tools.values()
+            ]
+        )
+    ),  # Creates System prompt based on available MCP server tools
+})    
+messages.append({"role": "user", "content": query})
+```
+
+We can then check if the `finish_reason` from the response, `first_response.choices[0].finish_reason`, is `tool_calls` or `stop`. If it's `tool_calls` we can iterate through `first_response.choices[0].message.tool_calls` as follows, make the actual tool calls with the specified arguments and then add the results to a new chat completion request:
+
+```python
+for tool_call in first_response.choices[0].message.tool_calls:
+    arguments = (
+        json.loads(tool_call.function.arguments)
+        if isinstance(tool_call.function.arguments, str)
+        else tool_call.function.arguments
+    )
+
+    # Call the tool with the arguments using our callable initialized in the tools dict
+    tool_result = await tools[tool_call.function.name]["callable"](**arguments)
+
+    # Add the tool result to the messages list
+    messages.append(
+        {
+            "role": "tool",
+            "tool_call_id": tool_call.id,
+            "name": tool_call.function.name,
+            "content": json.dumps(tool_result),
+        }
+    )
+
+# Query LLM with the user query and the tool results
+new_response = await client.chat.completions.create(
+    model=MODEL_ID,
+    messages=messages,
+)
+```
+
+Let's say we submit the query `list tables` for example, the generated tool call `tool_call.function.name` is `read_query` and the arguments are in the JSON format (`tool_call.function.arguments`) as follows:
+
+```json
+{"query": "SELECT name FROM sqlite_master WHERE type=\'table\';"}
+```
+
+Calling the function using `await tools[tool_call.function.name]["callable"](**arguments)` gives us the `tool_result` of the two tables in the database:
+
+```json
+[{"name": "dolphin_species"}, {"name": "evolutionary_relationships"}]
+```
+
+From there we appended this as a JSON object to the `messages` object and sent it to the LLM for `new_response`, which gets back a `ChatCompletionMessage` with the content as follows (the `finish_reason` is now `stop`):
+
+```markdown
+Sure! Here are the tables in the database:
+
+1. **dolphin_species**
+2. **evolutionary_relationships**
+
+Would you like to know more about any specific table? For example, I can describe the schema or fetch some data from it.
+```
+
+This content can then be used to continue the conversation.
+
 ## Ecosystem
 
 - [FastAPI-MCP](https://github.com/tadata-org/fastapi_mcp) - automatically expose FastAPI endpoints as Model Context Protocol (MCP) servers with this library.
