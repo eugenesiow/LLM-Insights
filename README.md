@@ -5,6 +5,7 @@ A collection of insights gleaned from work on each stage of Large Language Model
 1. Infrastructure/Platform 🏗️
    - [Hardware](infrastructure/hardware/)
    - [Alternative Accelerators](infrastructure/hardware/alternatives/)
+   - [Orchestration](infrastructure/orchestration/)
 2. Data Engineering 📊
    - [Common Crawl](dataengineering/cc/README.md)
 3. Pre-Training Stage 📚

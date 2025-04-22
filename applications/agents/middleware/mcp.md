@@ -478,7 +478,7 @@ async def call_tool(self, tool_name: str, arguments: dict):
 
 ### Client-to-LLM
 
-For this example, we will get queries from the user, pass them to the LLM, process any tool calls, pass the outputs to the LLM and return the generations to the user.
+For this example, we will get queries from the user, pass them to the LLM, process any tool calls, pass the outputs to the LLM and return the generations to the user. This follows the standard (OpenAI function calling API) flow of [function calling/tool use](function_calling.md).
 
 Before we start the client-to-user loop, we first want to use `list_tools()` to setup a system prompt to pass to the LLM.
 
