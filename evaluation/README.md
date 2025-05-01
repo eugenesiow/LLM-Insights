@@ -16,6 +16,7 @@ Evaluations generally consist of some datasets with ground truth answers (or som
 10. [Video](video/) - multimodal video language understanding, long-form video understanding, etc.
 11. [Long-Context](long-context/) - answering questions on long documents (e.g. 32K, 64K, 128K, 1M), where the knowledge required from the document could be anywhere in the document.
 12. [Agentic and Tool Use](agentic/) - ability to interact with external tools and environments, perform actions based on goals, and exhibit autonomous behavior.
+13. [Safety](safety/) - evaluate that models function responsibly, ethically, and securely, aligning with human values and minimizing potential harm.
 
 ## Evaluation Coverage
 
@@ -70,8 +71,8 @@ The following is a curated benchmark list covering a range of model capabilities
 | Long-context           | [InfiniteBench](long-context/infinitebench.md)                                     | Apache 2.0                 |         |         |                   |            |            |         | ✓         |        |                   |        |                     |             |
 | Long-context           | [NIH](long-context/nih.md)                                               | MIT                |         |         |                   |            |            |         | ✓         |        |                   |        |                     |             |
 | Long-context           | [LongBench](long-context/longbench.md)                                      | MIT                 |         |         |                   |            |            |         |           |        | ✓                 |        |                     |             |
-| Long-context           | RULER                                             |                 |         |         |                   |            |            |         |           |        | ✓                 |        |                     |             |
-| Safety                 | XSTest                                            |                 |         | ✓       |                   |            |            |         |           |        |                   |        |                     |             |
+| Long-context           | [RULER](long-context/ruler.md)                                             | Apache 2.0                 |         |         |                   |            |            |         |           |        | ✓                 |        |                     |             |
+| Safety                 | [XSTest](safety/xstest.md)                                            | CC-BY-4.0                 |         | ✓       |                   |            |            |         |           |        |                   |        |                     |             |
 | Safety                 | Tülu 3 Safety                                     |                 |         |         |                   |            |            |         |           |        |                   | ✓      |                     |             |
 | Factuality             | [PersonQA](factuality/personqa.md)                | Unknown ⚠️      |         | ✓       |                   |            |            |         |           |        |                   |        |                     |             |
 | Jailbreaking           | StrongREJECT                                      |                 |         | ✓       |                   |            |            |         |           |        |                   |        |                     |             |
